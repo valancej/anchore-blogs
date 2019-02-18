@@ -10,7 +10,7 @@ A **policy** is a named set of rules, represented as a JSON object within a Poli
 
 ## Why do we need a Dockerfile check?
 
-A Dockerfile is a text files that contains all commands, in order, to build a Docker image. In short, it is the blueprint for the container image environment. Since a container is a running instance of an image, in makes sense to incorporate effective mechanisms to check for best practices and potential misconfigurations with the blueprint.
+A Dockerfile is a text file that contains all commands, in order, to build a Docker image. In short, it is the blueprint for the container image environment. Since a container is a running instance of an image, in makes sense to incorporate effective mechanisms to check for best practices and potential misconfigurations with the blueprint.
 
 ## Dockerfile gate
 
