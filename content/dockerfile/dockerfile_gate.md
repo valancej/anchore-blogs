@@ -6,7 +6,7 @@ Understanding how to work with policies is a central component of using Anchore 
 
 At Anchore, Policy Bundles are the unit of policy definition and evaluation. A user may have multiple bundles, but for a policy evalution, the user must specify a bundle to be evaluated, or default to the bundle currently marked as active. A policy bundle is a single JSON document, composed of **policies**, whitelists, mappings, whitelisted images, and blacklisted images. 
 
-A **policy** is a named set of rules, represented as a JSON object within a Policy Bundle, each of which define a specific check to perform and a resulting action to emit if the check returns a match. These checks are defined as *Gates* that contain *triggers*. In this post, I will focus on the 'dockerfile' gate and it's triggers. 
+A **policy** is a named set of rules, represented as a JSON object within a Policy Bundle, each of which define a specific check to perform and a resulting action to emit if the check returns a match. These checks are defined as *Gates* that contain *Triggers*. In this post, I will focus on the 'dockerfile' gate and it's triggers. 
 
 ## Why do we need a Dockerfile check?
 
@@ -14,7 +14,7 @@ A Dockerfile is a text file that contains all commands, in order, to build a Doc
 
 ## Dockerfile gate
 
-The Dockerfile gate allows uses to perform checks ont he content of the Dockerfile or Docker history for an image and make policy actions based on the construction of the image, not just it's content. Anchore is either given a Dockerfile or infers one from the Docker image layer history. 
+The Dockerfile gate allows uses to perform checks on the content of the Dockerfile or Docker history for an image and make policy actions based on the construction of the image, not just it's content. Anchore is either given a Dockerfile or infers one from the Docker image layer history. 
 
 ### The *actual_dockerfile_only* parameter
 
@@ -66,6 +66,28 @@ Example policy to blacklist root user:
     {
       "name": "users",
       "value": "root"
+    }, 
+    {
+      "name": "type",
+      "value": "blacklist"
+    }
+  ]
+}
+```
+
+**Exposed ports:** This trigger processes the set of `EXPOSE` directives in the Dockerfile or history to determine the set of ports that are defined to be exposed (since it can span multiple directives). The detected value is then subject to a whitelist or blacklist filter depending on the configured parameters.
+
+Example of a plicy blacklisting ports 21 and 22: 
+
+```
+{
+  "gate": "dockerfile",
+  "trigger": "exposed_ports", 
+  "action": "warn", 
+  "parameters": [ 
+    {
+      "name": "ports",
+      "value": "21,22"
     }, 
     {
       "name": "type",
