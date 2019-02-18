@@ -4,9 +4,9 @@
 
 Understanding how to work with policies is a central component of using Anchore container image inspection and enforcement tools effectively. Anchore policies are how users represent which checks to execute on particular images, and how the results of the policy evaluation should be interpreted. 
 
-At Anchore, Policy Bundles are the unit of policy definition and evaluation. A user may have multiple bundles, but for a policy evalution, the user must specify a bundle to be evaluated, or default to the bundle currently marked as active. A policy bundle is a single JSON document, composed of **policies**, whitelists, mappings, whitelisted images, and blacklisted images. 
+At Anchore, Policy Bundles are the unit of policy definition and evaluation. A user may have multiple bundles, but for a policy evaluation, the user must specify a bundle to be evaluated, or default to the bundle currently marked as active. A policy bundle is a single JSON document, composed of **policies**, whitelists, mappings, whitelisted images, and blacklisted images. 
 
-A **policy** is a named set of rules, represented as a JSON object within a Policy Bundle, each of which define a specific check to perform and a resulting action to emit if the check returns a match. These checks are defined as *Gates* that contain *Triggers*. In this post, I will focus on the 'dockerfile' gate and it's triggers. 
+A **policy** is a named set of rules, represented as a JSON object within a Policy Bundle, each of which define a specific check to perform and a resulting action to emit if the check returns a match. These checks are defined as *Gates* that contain *Triggers*. In this post, I will focus on the 'dockerfile' gate and its triggers. 
 
 ## Why do we need a Dockerfile check?
 
@@ -77,7 +77,7 @@ Example policy to blacklist root user:
 
 **Exposed ports:** This trigger processes the set of `EXPOSE` directives in the Dockerfile or history to determine the set of ports that are defined to be exposed (since it can span multiple directives). The detected value is then subject to a whitelist or blacklist filter depending on the configured parameters.
 
-Example of a plicy blacklisting ports 21 and 22: 
+Example of a policy blacklisting ports 21 and 22: 
 
 ```
 {
@@ -98,7 +98,6 @@ Example of a plicy blacklisting ports 21 and 22:
 ```
 
 **no_dockerfile_provided:** This trigger allows checks on the way the image was added, firing if the dockerfile was not explicitly provided at analysis time. This is useful in identifying and qualifying other trigger matches.
-
 
 ### Conclusion and example
 
@@ -123,7 +122,7 @@ ADD example.tar.gz /example
 
 #### Why is this not so great?
 
-- `FROM node:latest`: This doesn't always have to be bad, but it is something to make developers aware of. If we always use the `latest` tag, we run the risk of our build suddenly breaking if that image tag gets updated. To prevent this from occuring, using a specific tag will help to ensure immutability. Additionally, depending on use of your image, you may not need the full `node:latest` image and it's dependencies. Many trusted images have `alpine` version which greatly reduce the total image size, thus reducing the possibility of vulnerabilites in packages, and increasing the time of build. 
+- `FROM node:latest`: This doesn't always have to be bad, but it is something to make developers aware of. If we always use the `latest` tag, we run the risk of our build suddenly breaking if that image tag gets updated. To prevent this from occurring, using a specific tag will help to ensure immutability. Additionally, depending on use of your image, you may not need the full `node:latest` image and its dependencies. Many trusted images have `alpine` version which greatly reduce the total image size, thus reducing the possibility of vulnerabilities in packages, and increasing the time of build. 
 
     - Example of differences is size (node:6 versus node:alpine)
 ```
@@ -135,7 +134,7 @@ node                                                       alpine              e
 
 - `EXPOSE 22 3000`: We can see as stated in the comment above the `EXPOSE` instruction, port 22 is only used for testing, therefore we can remove it when building our production ready images. **Note** the placement of the `EXPOSE` instruction (close to the top). `EXPOSE` is a cheap command to run, so it is typically best to declare it as late as possible.
 
-- `# LABEL maintainer="jvalance@email.com"`: We aren't including a `LABEL` instruction. It it generally considered a good practice to add labels for organization, automation, licensing information, etc.
+- `# LABEL maintainer="jvalance@email.com"`: We aren't including a `LABEL` instruction. It is generally considered a good practice to add labels for organization, automation, licensing information, etc.
 
 - `# HEALTHCHECK --interval=30s CMD node healthcheck.js`: No `HEALTHCHECK` instruction. Typically, this is useful for telling Docker to periodically check our container health status. Great article on why located [here](https://blog.newrelic.com/engineering/docker-health-check-instruction/).
 
@@ -163,3 +162,4 @@ EXPOSE 3000
 ```
 
 Many of these mistakes can be checked and validated with Anchore policies and in particular the Dockerfile gate I've discussed in the previous sections. If you are already leveraging Anchore to inspect your container images, I strongly suggest diving into the Dockerfile gate and adjusting it to suit your needs. If not, feel free to take a look at Anchore and how conducting a deep image inspection coupled with flexible polices help users gain insight into the contents of their Docker images and enforce security, compliance, and best-practice requirements. 
+
