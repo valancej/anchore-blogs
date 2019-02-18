@@ -22,6 +22,58 @@ The actual versus history impacts the semantics of the Dockerfile gate's trigger
 
 ### Triggers
 
-**Effective User:** This trigger process all `USER` directives in the Dockerfile or history to determine which user will be user to run the container by default (assuming no user is set explicitly at runtime). The detected value is then subject to a whitelist or blacklist filter depending on the configured parameters. 
+**Instruction:** This trigger evaluates instructions found in the Dockerfile.
+
+Example of a policy looking for a set of trusted base images: 
+
+```
+{
+  "action": "STOP",
+  "gate": "dockerfile",
+  "id": "c35b7509-b0de-4b7a-9749-47380a2f98f2",
+  "params": [
+    {
+      "name": "instruction",
+      "value": "FROM"
+    },
+    {
+      "name": "check",
+      "value": "not_in"
+    },
+    {
+      "name": "value",
+      "value": "alpine:latest,ubuntu:16.04"
+    },
+    {
+      "name": "actual_dockerfile_only",
+      "value": "true"
+    }
+  ],
+  "trigger": "instruction"
+}
+```
+
+
+**Effective User:** This trigger processes all `USER` directives in the Dockerfile or history to determine which user will be user to run the container by default (assuming no user is set explicitly at runtime). The detected value is then subject to a whitelist or blacklist filter depending on the configured parameters. 
 
 Running containers as root is generally considered to be a bad practice, however adding a `USER` instruction to the Dockerfile to specify a non-root user for the container to run as is a good place to start. If you do need to run as root, you can change the user to root at the beginning of the Dockerfile, then change back to the correct user with a second `USER` instruction. 
+
+Example policy to blacklist root user: 
+
+```
+{
+  "gate": "dockerfile",
+  "trigger": "effective_user", 
+  "action": "stop", 
+  "parameters": [ 
+    {
+      "name": "users",
+      "value": "root"
+    }, 
+    {
+      "name": "type",
+      "value": "blacklist"
+    }
+  ]
+}
+```
