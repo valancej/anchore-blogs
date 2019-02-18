@@ -15,3 +15,13 @@ A Dockerfile is a text file that contains all commands, in order, to build a Doc
 ## Dockerfile gate
 
 The Dockerfile gate allows uses to perform checks ont he content of the Dockerfile or Docker history for an image and make policy actions based on the construction of the image, not just it's content. Anchore is either given a Dockerfile or infers one from the Docker image layer history. 
+
+### The *actual_dockerfile_only* parameter
+
+The actual versus history impacts the semantics of the Dockerfile gate's triggers. To allow explicit control of the differences, most triggers in this gate includes a parameter: *actual_dockerfile_only* that if set to true or false will ensure the trigger check is only done on the source of data specified. If *actual_dockerfile_only* = true, then the trigger will evaluate only if an actual Dockerfile is available for the image and will skip evaluation if not. If *actual_dockerfile_only* is false or omitted, then the trigger will run on the actual Dockerfile if available, or the history data if the Dockerfile was not provided.
+
+### Triggers
+
+**Effective User:** This trigger process all `USER` directives in the Dockerfile or history to determine which user will be user to run the container by default (assuming no user is set explicitly at runtime). The detected value is then subject to a whitelist or blacklist filter depending on the configured parameters. 
+
+Running containers as root is generally considered to be a bad practice, however adding a `USER` instruction to the Dockerfile to specify a non-root user for the container to run as is a good place to start. If you do need to run as root, you can change the user to root at the beginning of the Dockerfile, then change back to the correct user with a second `USER` instruction. 
