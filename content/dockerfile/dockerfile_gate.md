@@ -97,6 +97,9 @@ Example of a plicy blacklisting ports 21 and 22:
 }
 ```
 
+**no_dockerfile_provided:** This trigger allows checks on the way the image was added, firing if the dockerfile was not explicitly provided at analysis time. This is useful in identifying and qualifying other trigger matches.
+
+
 ### Conclusion and example
 
 A short example of why writing secure and efficient Dockerfiles is important. You can probably spot a good chunk of issues with the following Dockerfile:
@@ -159,4 +162,4 @@ USER node
 EXPOSE 3000
 ```
 
-Many of these mistakes can be checked and validated with Anchore policies and in particular the Dockerfile gate I've discussed in the previous sections. 
+Many of these mistakes can be checked and validated with Anchore policies and in particular the Dockerfile gate I've discussed in the previous sections. If you are already leveraging Anchore to inspect your container images, I strongly suggest diving into the Dockerfile gate and adjusting it to suit your needs. If not, feel free to take a look at Anchore and how conducting a deep image inspection coupled with flexible polices help users gain insight into the contents of their Docker images and enforce security, compliance, and best-practice requirements. 
