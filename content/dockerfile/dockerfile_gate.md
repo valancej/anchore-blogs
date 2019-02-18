@@ -122,7 +122,7 @@ ADD example.tar.gz /example
 
 - `FROM node:latest`: This doesn't always have to be bad, but it is something to make developers aware of. If we always use the `latest` tag, we run the risk of our build suddenly breaking if that image tag gets updated. To prevent this from occuring, using a specific tag will help to ensure immutability. Additionally, depending on use of your image, you may not need the full `node:latest` image and it's dependencies. Many trusted images have `alpine` version which greatly reduce the total image size, thus reducing the possibility of vulnerabilites in packages, and increasing the time of build. 
 
-Example of differences is size (node:6 versus node:alpine)
+    - Example of differences is size (node:6 versus node:alpine)
 ```
 # docker images
 
