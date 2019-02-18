@@ -138,7 +138,9 @@ node                                                       alpine              e
 
 - `# USER node`: No user defined. I've explained above why this is important to include. Read more about it [here](https://github.com/i0natan/nodebestpractices/blob/master/sections/security/non-root-user.md).
 
-Many of these mistakes can be checked and validated with Anchore policies and in particular the Dockerfile gate I've discussed in the previous sections. 
+- `ADD example.tar.gz /example`: I've mentioned above why using `COPY` instead of `ADD` is considered better practice.
+
+#### Making the Dockerfile a bit better
 
 ```
 FROM node:6.16.0-alpine
@@ -157,3 +159,4 @@ USER node
 EXPOSE 3000
 ```
 
+Many of these mistakes can be checked and validated with Anchore policies and in particular the Dockerfile gate I've discussed in the previous sections. 
