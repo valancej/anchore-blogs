@@ -24,28 +24,24 @@ The actual versus history impacts the semantics of the Dockerfile gate's trigger
 
 **Instruction:** This trigger evaluates instructions found in the Dockerfile.
 
-Example of a policy looking for a set of trusted base images via the `FROM` instruction: 
+Example of a policy looking for the presence of the `ADD` instruction: 
 
 ```
 {
-  "action": "STOP",
+  "action": "WARN",
   "gate": "dockerfile",
   "id": "c35b7509-b0de-4b7a-9749-47380a2f98f2",
   "params": [
     {
       "name": "instruction",
-      "value": "FROM"
+      "value": "ADD"
     },
     {
       "name": "check",
-      "value": "not_in"
+      "value": "exists"
     },
     {
-      "name": "value",
-      "value": "alpine:latest,ubuntu:16.04"
-    },
-    {
-      "name": "actual_dockerfile_only",
+      "name": "actual_dockerfile_only"
       "value": "true"
     }
   ],
@@ -53,6 +49,7 @@ Example of a policy looking for a set of trusted base images via the `FROM` inst
 }
 ```
 
+In the above example, if the actual Dockerfile contains the instruction `ADD` a WARN action will result. Generally speaking, using the instruction `COPY` versus `ADD` is considered better practice. Read more about it [here](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy).
 
 **Effective User:** This trigger processes all `USER` directives in the Dockerfile or history to determine which user will be user to run the container by default (assuming no user is set explicitly at runtime). The detected value is then subject to a whitelist or blacklist filter depending on the configured parameters. 
 
