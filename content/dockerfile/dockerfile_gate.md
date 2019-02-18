@@ -8,6 +8,8 @@ At Anchore, Policy Bundles are the unit of policy definition and evaluation. A u
 
 A **policy** is a named set of rules, represented as a JSON object within a Policy Bundle, each of which define a specific check to perform and a resulting action to emit if the check returns a match. These checks are defined as *Gates* that contain *Triggers*. In this post, I will focus on the 'dockerfile' gate and its triggers. 
 
+For reference, there is more detailed documentation on this policy gate located [here](https://anchore.freshdesk.com/support/solutions/articles/36000111104-policy-gate-dockerfile).
+
 ## Why do we need a Dockerfile check?
 
 A Dockerfile is a text file that contains all commands, in order, to build a Docker image. In short, it is the blueprint for the container image environment. Since a container is a running instance of an image, in makes sense to incorporate effective mechanisms to check for best practices and potential misconfigurations with the blueprint.
