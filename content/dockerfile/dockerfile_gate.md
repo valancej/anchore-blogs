@@ -97,7 +97,7 @@ Example of a plicy blacklisting ports 21 and 22:
 }
 ```
 
-### An example of a very poorly written Dockerfile
+### Conclusion and example
 
 A short example of why writing secure and efficient Dockerfiles is important. You can probably spot a good chunk of issues with the following Dockerfile:
 
