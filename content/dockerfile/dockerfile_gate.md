@@ -24,7 +24,7 @@ The actual versus history impacts the semantics of the Dockerfile gate's trigger
 
 **Instruction:** This trigger evaluates instructions found in the Dockerfile.
 
-Example of a policy looking for a set of trusted base images: 
+Example of a policy looking for a set of trusted base images via the `FROM` instruction: 
 
 ```
 {
