@@ -1,4 +1,4 @@
-# Understanding Anchore's 'dockerfile' policy gate
+# Understanding the 'dockerfile' policy gate
 
 ## Introduction
 
