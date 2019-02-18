@@ -96,3 +96,43 @@ Example of a plicy blacklisting ports 21 and 22:
   ]
 }
 ```
+
+### An example of a very poorly written Dockerfile
+
+A short example of why writing secure and efficient Dockerfiles is important. You can probably spot a good chunk of issues with the following Dockerfile:
+
+```
+FROM node:latest
+
+## port 22 for testing only
+EXPOSE 22 3000 
+
+RUN apt-get update
+RUN apt-get install -y curl nginx
+
+# LABEL maintainer="jvalance@email.com"
+
+ADD example.tar.gz /example
+
+# HEALTHCHECK --interval=30s CMD node healthcheck.js 
+# USER node
+```
+
+Many of these mistakes can be checked and validated with Anchore policies and in particular the Dockerfile gate I've discussed above. 
+
+```
+FROM node:6.16.0-alpine
+
+LABEL maintainer="jvalance@email.com"
+
+RUN apt-get update && apt-get install -y \
+        curl \
+        nginx
+
+COPY example.tar.gz /example
+
+HEALTHCHECK --interval=30s CMD node healthcheck.js 
+USER node
+
+EXPOSE 3000
+```
