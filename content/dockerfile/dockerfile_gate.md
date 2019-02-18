@@ -118,7 +118,7 @@ ADD example.tar.gz /example
 # USER node
 ```
 
-Many of these mistakes can be checked and validated with Anchore policies and in particular the Dockerfile gate I've discussed above. 
+Many of these mistakes can be checked and validated with Anchore policies and in particular the Dockerfile gate I've discussed in the previous sections. 
 
 ```
 FROM node:6.16.0-alpine
