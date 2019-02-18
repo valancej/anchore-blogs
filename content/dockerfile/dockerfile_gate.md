@@ -12,7 +12,7 @@ For reference, there is more detailed documentation on this policy gate located 
 
 ## Why do we need a Dockerfile check?
 
-A Dockerfile is a text file that contains all commands, in order, to build a Docker image. In short, it is the blueprint for the container image environment. Since a container is a running instance of an image, in makes sense to incorporate effective mechanisms to check for best practices and potential misconfigurations with the blueprint.
+A Dockerfile is a text file that contains all commands, in order, to build a Docker image. In short, it is the blueprint for the container image environment. Since a container is a running instance of an image, in makes sense to incorporate effective mechanisms to check for best practices and potential misconfigurations with the blueprint as early as possible.
 
 ## Dockerfile gate
 
