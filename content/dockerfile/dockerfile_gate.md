@@ -118,6 +118,26 @@ ADD example.tar.gz /example
 # USER node
 ```
 
+#### Why is this not so great?
+
+- `FROM node:latest`: This doesn't always have to be bad, but it is something to make developers aware of. If we always use the `latest` tag, we run the risk of our build suddenly breaking if that image tag gets updated. To prevent this from occuring, using a specific tag will help to ensure immutability. Additionally, depending on use of your image, you may not need the full `node:latest` image and it's dependencies. Many trusted images have `alpine` version which greatly reduce the total image size, thus reducing the possibility of vulnerabilites in packages, and increasing the time of build. 
+
+Example of differences is size (node:6 versus node:alpine)
+```
+# docker images
+
+node                                                       6                   62905ac2c7de        12 days ago         882MB
+node                                                       alpine              ebbf98230a82        2 weeks ago         73.7MB
+```
+
+- `EXPOSE 22 3000`: We can see as stated in the comment above the `EXPOSE` instruction, port 22 is only used for testing, therefore we can remove it when building our production ready images. **Note** the placement of the `EXPOSE` instruction (close to the top). `EXPOSE` is a cheap command to run, so it is typically best to declare it as late as possible.
+
+- `# LABEL maintainer="jvalance@email.com"`: We aren't including a `LABEL` instruction. It it generally considered a good practice to add labels for organization, automation, licensing information, etc.
+
+- `# HEALTHCHECK --interval=30s CMD node healthcheck.js`: No `HEALTHCHECK` instruction. Typically, this is useful for telling Docker to periodically check our container health status. Great article on why located [here](https://blog.newrelic.com/engineering/docker-health-check-instruction/).
+
+- `# USER node`: No user defined. I've explained above why this is important to include. Read more about it [here](https://github.com/i0natan/nodebestpractices/blob/master/sections/security/non-root-user.md).
+
 Many of these mistakes can be checked and validated with Anchore policies and in particular the Dockerfile gate I've discussed in the previous sections. 
 
 ```
@@ -136,3 +156,4 @@ USER node
 
 EXPOSE 3000
 ```
+
