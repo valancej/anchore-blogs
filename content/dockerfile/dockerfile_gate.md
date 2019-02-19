@@ -103,7 +103,7 @@ Example of a policy blacklisting ports 21 and 22:
 
 ### Conclusion and example
 
-Below is a short (and intentionally bad) example of why writing secure and efficient Dockerfiles is important. You can probably spot a good chunk of issues with the following section of a Dockerfile:
+Below is a short example of why writing secure and efficient Dockerfiles is important. You can probably spot a good chunk of issues with the following section of an intentionally bad Dockerfile:
 
 ```
 FROM node:latest
