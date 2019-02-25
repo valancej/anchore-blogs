@@ -1,6 +1,6 @@
 # Running Anchore Engine on Openshift
 
-In this post, I will run through an installation of Anchore on OpenShift. I'll also discuss in brief how we can use Anchore to scan images. 
+In this post, I will run through an installation of Anchore on OpenShift. I'll also discuss in brief how to use Anchore to scan images. 
 
 ## Getting started
 
@@ -51,7 +51,42 @@ For more details on using the Helm chart please consult the GitHub repo.
 
 ## Installing Anchore 
 
-Create a new project via `oc new-project anchore-engine`
+Create a new project via `oc new-project anchore-engine`.
+
+Give Tiller access to the project you created.
+
+```
+oc policy add-role-to-user edit "system:serviceaccount:${TILLER_NAMESPACE}:tiller" role "edit" added: "system:serviceaccount:tiller:tiller"
+```
+
+Verify you are using the created project.
+
+```
+[centos@ip-172-31-7-54 ~]$  oc login -u test -p test https://console.52.14.129.143:8443
+Login successful.
+
+You have access to the following projects and can switch between them with 'oc project <projectname>':
+
+  * anchore-engine
+    default
+    kube-public
+    kube-service-catalog
+    kube-system
+    management-infra
+    openshift
+    openshift-console
+    openshift-infra
+    openshift-logging
+    openshift-metrics-server
+    openshift-monitoring
+    openshift-node
+    openshift-sdn
+    openshift-template-service-broker
+    openshift-web-console
+    tiller
+
+Using project "anchore-engine".
+```
 
 Run the following command to install Anchore: 
 
@@ -77,9 +112,21 @@ In addition, you can check on the installation via the OpenShift UI.
 
 ![screenshot](images/pod-overview.png)
 
-We can also install the [Anchore CLI](https://github.com/anchore/anchore-cli) to interact with our running Anchore Engine service. There is also a [CLI container](https://hub.docker.com/r/anchore/engine-cli/).
+#### Exposing the Anchore Engine service
 
-Configure you Anchore CLI environment variables to communitate with the anchore engine API service. Now we can check on the status of the Anchore services by running `anchore-cli system status`.
+Create a route in the OpenShift UI to expose the Anchore Engine service: 
+
+![screenshot](images/routes.png)
+
+The hostname of this route is what I will set our Anchore CLI URL environment variable to in the step below. 
+
+![screenshot](images/routes-2.png)
+
+#### Installing the Anchore CLI
+
+I can now install the [Anchore CLI](https://github.com/anchore/anchore-cli) to interact with our running Anchore Engine service. There is also a [CLI container](https://hub.docker.com/r/anchore/engine-cli/).
+
+Configure you Anchore CLI environment variables to communitate with the anchore engine API service. Now I can check on the status of the Anchore services by running `anchore-cli system status`.
 
 ```
 [centos@ip-172-31-7-54 ~]$ anchore-cli system status
@@ -171,3 +218,5 @@ The following commands are useful when looking to obtain a list of vulnerabilite
 - `anchore-cli image vuln docker.io/library/nginx:stable all` (Displays all vulnerabilities)
 
 **Note:** If there are no vulnerabilities returned and you have a healthy Anchore Engine service, the image may not be triggering any vulnerability matches.  
+
+## Conclusion
