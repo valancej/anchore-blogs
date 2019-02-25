@@ -156,6 +156,8 @@ The following commands are useful when analyzing images:
 - `anchore-cli image wait docker.io/library/nging:stable` (Waits for an image to complete analysis)
 - `anchore-cli image list` (Lists all images)
 
-While these commands are fetching from DockerHub, you can configure Anchore to scan images in private registries as well. For example, during my installation of OKD, a Docker registry was deployed automatically, as shown below.
+While these commands are fetching from Docker Hub, you can configure Anchore to scan images in private registries as well. For example, during my installation of OKD, a Docker registry was deployed automatically, as shown below.
 
 ![screenshot](images/docker-registry.png)
+
+I can use command Docker commands to push and pull images to and from this registry, and configure Anchore to watch images in this registry for updates. 
