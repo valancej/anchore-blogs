@@ -56,3 +56,5 @@ Run the following command to install Anchore:
 ```
 helm install --name <release_name> -f anchore-values.yaml stable/anchore-engine
 ```
+
+An initial install will take several minutes to complete. Additionally, it will also take some time to perform its initial data feed sync. 
