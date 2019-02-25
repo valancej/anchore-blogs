@@ -1,6 +1,6 @@
 # Running Anchore Engine on Openshift
 
-In this post, I will run through an installation of Anchore on OpenShift. I'll also discuss in brief how we can use Anchore to scan images, and work with policies. 
+In this post, I will run through an installation of Anchore on OpenShift. I'll also discuss in brief how we can use Anchore to scan images. 
 
 ## Getting started
 
@@ -89,3 +89,73 @@ Service policy_engine (anchore-engine-anchore-engine-policy-8cb4787ff-p8tpf, htt
 Service analyzer (anchore-engine-anchore-engine-analyzer-7d5fc7fb4c-2z85z, http://anchore-engine-anchore-engine-analyzer:8084): up
 Service catalog (anchore-engine-anchore-engine-catalog-65bbfdd7c7-7ldzj, http://anchore-engine-anchore-engine-catalog:8082): up
 ```
+
+You can also check on the stats of the vulnerability feeds sync by running the `anchore-cli system feeds list` command.
+
+```
+[centos@ip-172-31-7-54 ~]$ anchore-cli system feeds list
+Feed                   Group                  LastSync                          RecordCount        
+nvd                    nvddb:2002             2019-02-25T21:35:12.802608        6745               
+nvd                    nvddb:2003             2019-02-25T21:35:13.188204        1547               
+nvd                    nvddb:2004             2019-02-25T21:35:13.774093        2702               
+nvd                    nvddb:2005             2019-02-25T21:35:14.281344        4749               
+nvd                    nvddb:2006             2019-02-25T21:39:01.936476        7127               
+nvd                    nvddb:2007             2019-02-25T21:39:02.432799        6556               
+nvd                    nvddb:2008             2019-02-25T22:29:19.704624        7147               
+nvd                    nvddb:2009             2019-02-25T22:29:20.292788        4964               
+nvd                    nvddb:2010             2019-02-25T22:29:20.720235        5073               
+nvd                    nvddb:2011             2019-02-25T21:30:43.003078        4621               
+nvd                    nvddb:2012             2019-02-25T21:35:11.663650        5549               
+nvd                    nvddb:2013             2019-02-25T21:39:01.289722        6160               
+nvd                    nvddb:2014             2019-02-25T21:42:11.148478        8493               
+nvd                    nvddb:2015             2019-02-25T21:44:55.773423        8023               
+nvd                    nvddb:2016             2019-02-25T21:48:13.150698        9872               
+nvd                    nvddb:2017             2019-02-25T22:03:35.550272        15162              
+nvd                    nvddb:2018             2019-02-25T22:26:12.131914        13541              
+nvd                    nvddb:2019             2019-02-25T22:29:19.116614        963                
+vulnerabilities        alpine:3.3             2019-02-25T21:15:55.103331        457                
+vulnerabilities        alpine:3.4             2019-02-25T21:15:55.428108        681                
+vulnerabilities        alpine:3.5             2019-02-25T21:15:55.795007        875                
+vulnerabilities        alpine:3.6             2019-02-25T21:15:56.135527        918                
+vulnerabilities        alpine:3.7             2019-02-25T21:15:53.751574        919                
+vulnerabilities        alpine:3.8             2019-02-25T21:15:54.071555        996                
+vulnerabilities        amzn:2                 2019-02-25T21:15:54.417658        135                
+vulnerabilities        centos:5               2019-02-25T21:15:50.007481        1323               
+vulnerabilities        centos:6               2019-02-25T21:15:50.358919        1317               
+vulnerabilities        centos:7               2019-02-25T21:15:58.630997        754                
+vulnerabilities        debian:10              2019-02-25T21:15:50.692485        19674              
+vulnerabilities        debian:7               2019-02-25T21:15:51.141333        20455              
+vulnerabilities        debian:8               2019-02-25T21:15:51.509929        21179              
+vulnerabilities        debian:9               2019-02-25T21:15:51.872651        19899              
+vulnerabilities        debian:unstable        2019-02-25T21:15:56.488092        20427              
+vulnerabilities        ol:5                   2019-02-25T21:15:56.879681        1228               
+vulnerabilities        ol:6                   2019-02-25T21:15:57.226619        1382               
+vulnerabilities        ol:7                   2019-02-25T21:15:57.570317        854                
+vulnerabilities        ubuntu:12.04           2019-02-25T21:15:57.931096        14946              
+vulnerabilities        ubuntu:12.10           2019-02-25T21:15:48.681891        5652               
+vulnerabilities        ubuntu:13.04           2019-02-25T21:15:49.284442        4127               
+vulnerabilities        ubuntu:14.04           2019-02-25T21:15:52.520471        17927              
+vulnerabilities        ubuntu:14.10           2019-02-25T21:15:54.731972        4456               
+vulnerabilities        ubuntu:15.04           2019-02-25T21:15:52.995122        5748               
+vulnerabilities        ubuntu:15.10           2019-02-25T21:15:53.357807        6511               
+vulnerabilities        ubuntu:16.04           2019-02-25T21:15:58.291030        14906              
+vulnerabilities        ubuntu:16.10           2019-02-25T21:15:46.706940        8647               
+vulnerabilities        ubuntu:17.04           2019-02-25T21:15:47.111422        9157               
+vulnerabilities        ubuntu:17.10           2019-02-25T21:15:47.565082        7935               
+vulnerabilities        ubuntu:18.04           2019-02-25T21:15:48.002361        9158               
+vulnerabilities        ubuntu:18.10           2019-02-25T21:15:48.332466        7245     
+```
+
+Once the feeds and synced, you can now begin to can vulnerability matches back on any analyzed images that contain vulnerability packages (both os and non-os).
+
+### Analyzing an image
+
+The following commands are useful when analyzing images:
+
+- `anchore-cli image add docker.io/library/nginx:stable` (Adds an image for analysis)
+- `anchore-cli image wait docker.io/library/nging:stable` (Waits for an image to complete analysis)
+- `anchore-cli image list` (Lists all images)
+
+While these commands are fetching from DockerHub, you can configure Anchore to scan images in private registries as well. For example, during my installation of OKD, a Docker registry was deployed automatically, as shown below.
+
+![screenshot](images/docker-registry.png)
