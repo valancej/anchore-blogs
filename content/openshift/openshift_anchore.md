@@ -29,7 +29,7 @@ For my installation, I've set up a PostgreSQl database in Amazon RDS that I will
 
 ### Configuring the external db
 
-In order to configure the external db, create a new file name `anchore-values.yaml` and add the following: 
+In order to configure the external db, create a new file named `anchore-values.yaml` and add the following: 
 
 ```YAML
 ## anchore-values.yaml
@@ -45,4 +45,14 @@ postgresql:
   # Specify an external (already existing) postgres deployment for use.
   # Set to the host and port. eg. mypostgres.myserver.io:5432
   externalEndpoint: anchore-db-instance.<123456>.us-east-2.rds.amazonaws.com:5432
+```
+
+For more details on using the Helm chart please consult the GitHub repo. 
+
+## Installing Anchore 
+
+Run the following command to install Anchore: 
+
+```
+helm install --name <release_name> -f anchore-values.yaml stable/anchore-engine
 ```
