@@ -76,3 +76,16 @@ anchore-engine-anchore-engine-simplequeue-5f7b7f866b-2hn2n   1/1       Running  
 In addition, you can check on the installation via the OpenShift UI. 
 
 ![screenshot](images/pod-overview.png)
+
+We can also install the [Anchore CLI](https://github.com/anchore/anchore-cli) to interact with our running Anchore Engine service. There is also a [CLI container](https://hub.docker.com/r/anchore/engine-cli/).
+
+Configure you Anchore CLI environment variables to communitate with the anchore engine API service. Now we can check on the status of the Anchore services by running `anchore-cli system status`.
+
+```
+[centos@ip-172-31-7-54 ~]$ anchore-cli system status
+Service apiext (anchore-engine-anchore-engine-api-55b785794-5qn79, http://anchore-engine-anchore-engine-api:8228): up
+Service simplequeue (anchore-engine-anchore-engine-simplequeue-5f7b7f866b-2hn2n, http://anchore-engine-anchore-engine-simplequeue:8083): up
+Service policy_engine (anchore-engine-anchore-engine-policy-8cb4787ff-p8tpf, http://anchore-engine-anchore-engine-policy:8087): up
+Service analyzer (anchore-engine-anchore-engine-analyzer-7d5fc7fb4c-2z85z, http://anchore-engine-anchore-engine-analyzer:8084): up
+Service catalog (anchore-engine-anchore-engine-catalog-65bbfdd7c7-7ldzj, http://anchore-engine-anchore-engine-catalog:8082): up
+```
