@@ -221,4 +221,4 @@ The following commands are useful when looking to obtain a list of vulnerabilite
 
 ## Conclusion
 
-I have now successfully installed Anchore Engine on OpenShift with Helm and analyzed my first image. What I recommeded as a next step is to take a deeper looking into Anchore policies, and how you can use them to govern images running through a CI tool to potentially stop vulnerable images from making their way to production environments.
+I have now successfully installed Anchore Engine on OpenShift with Helm and analyzed my first image. What I recommeded as a next step is to take a deeper looking into Anchore policies, and how you can use them to govern images running through a CI tool to potentially stop vulnerable images from making their way to production environments. You can find our more about policies by checking out our public facing documentation located [here](https://anchore.freshdesk.com/support/home).
