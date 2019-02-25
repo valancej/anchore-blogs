@@ -220,3 +220,5 @@ The following commands are useful when looking to obtain a list of vulnerabilite
 **Note:** If there are no vulnerabilities returned and you have a healthy Anchore Engine service, the image may not be triggering any vulnerability matches.  
 
 ## Conclusion
+
+I have now successfully installed Anchore Engine on OpenShift with Helm and analyzed my first image. What I recommeded as a next step is to take a deeper looking into Anchore policies, and how you can use them to govern images running through a CI tool to potentially stop vulnerable images from making their way to production environments.
