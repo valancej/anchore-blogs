@@ -161,3 +161,13 @@ While these commands are fetching from Docker Hub, you can configure Anchore to 
 ![screenshot](images/docker-registry.png)
 
 I can use command Docker commands to push and pull images to and from this registry, and configure Anchore to watch images in this registry for updates. 
+
+### Get a list of vulnerabilities
+
+The following commands are useful when looking to obtain a list of vulnerabilites within an analyzed image.
+
+- `anchore-cli image vuln docker.io/library/nginx:stable os` (Displays any os vulnerabilities)
+- `anchore-cli image vuln docker.io/library/nginx:stable non-os` (Displays any non-os vulnerabilities)
+- `anchore-cli image vuln docker.io/library/nginx:stable all` (Displays all vulnerabilities)
+
+**Note:** If there are no vulnerabilities returned and you have a healthy Anchore Engine service, the image may not be triggering any vulnerability matches.  
