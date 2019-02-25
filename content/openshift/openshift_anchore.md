@@ -51,6 +51,8 @@ For more details on using the Helm chart please consult the GitHub repo.
 
 ## Installing Anchore 
 
+Create a new project via `oc new-project anchore-engine`
+
 Run the following command to install Anchore: 
 
 ```
@@ -58,3 +60,19 @@ helm install --name <release_name> -f anchore-values.yaml stable/anchore-engine
 ```
 
 An initial install will take several minutes to complete. Additionally, it will also take some time to perform its initial data feed sync. 
+
+You can run `oc get pods` to see how things are doing.
+
+```
+[centos@ip-172-31-7-54 ~]$ oc get pods
+NAME                                                         READY     STATUS    RESTARTS   AGE
+anchore-engine-anchore-engine-analyzer-7d5fc7fb4c-phkt8      1/1       Running   0          1h
+anchore-engine-anchore-engine-api-55b785794-tk6qt            1/1       Running   0          1h
+anchore-engine-anchore-engine-catalog-65bbfdd7c7-7ldzj       1/1       Running   0          1h
+anchore-engine-anchore-engine-policy-8cb4787ff-sdw7v         1/1       Running   0          1h
+anchore-engine-anchore-engine-simplequeue-5f7b7f866b-2hn2n   1/1       Running   0          1h
+```
+
+In addition, you can check on the installation via the OpenShift UI. 
+
+![screenshot](images/pod-overview.png)
