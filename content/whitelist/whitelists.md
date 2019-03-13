@@ -14,3 +14,25 @@ Selecting the edit button on the far right under the action column, will bring u
 
 ![alt text](images/whitelist-items.png)
 
+This example whitelist above is represented as JSON below: 
+
+```JSON
+{
+  "comment": "Default global whitelist",
+  "id": "37fd763e-1765-11e8-add4-3b16c029ac5c",
+  "items": [
+    {
+      "gate": "vulnerabilities",
+      "id": "733e15c7-5b85-4f86-b14e-56a3f95daeea",
+      "trigger_id": "CVE-2018-1000120+curl"
+    },
+    {
+      "gate": "vulnerabilities",
+      "id": "66e895ca-16a1-4924-9dc4-bb8f994d9ec5",
+      "trigger_id": "CVE-2018-1000120+*"
+    }
+  ],
+  "name": "Global Whitelist",
+  "version": "1_0"
+}
+```
