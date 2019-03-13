@@ -60,3 +60,9 @@ Anchore users can view the whitelisted entries in the Policy Evaluation table as
 Additionally, users can optionally Add / Remove a particular whitelist item as shown below:
 
 ![alt text](images/whitelist-add.png)
+
+### Conclusion
+
+When working with the security risks associated with both operating system and non-operating system packages, ignoring issues is sometimes a necessary action. At Anchore, the goal is to provide teams a solid means of managing vulnerabilities and packages that may need to be suppressed. Due to the fact that working with whitelists and policies carries a certain level of risk, Anchore Enterprise provides role based access control to make policy editing only available to users who have been assigned the appropriate level of permissions. In the example below, the current user only has 'read-only' access and cannot make any changes to the whitelist. 
+
+![alt text](images/whitelist-ro.png)
