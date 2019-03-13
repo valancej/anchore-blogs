@@ -12,5 +12,5 @@ Within the Anchore Enterprise UI, navigating to the Whitelists tab will show the
 
 Selecting the edit button on the far right under the action column, will bring up the whitelist editor where users have the ability to create new whitelist entries or modify existing ones. 
 
-![alt text](/images/whitelist-items.png)
+![alt text](images/whitelist-items.png)
 
