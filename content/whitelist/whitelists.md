@@ -4,9 +4,13 @@ At Anchore, we are consistently working with our users and customers to help the
 
 Anchore policy bundles are the unit of policy definition and evaluation. Anchore users may have multiple policy bundles, but for a policy evaluation, the user must specify a bundle to be evaluated or default to the bundle currently marked as active. One of the components of a policy bundle is whitelists. A whitelist is a set of exclusion rules for trigger matches found during policy evaluation. A whitelist defines a specific gate and trigger_id that should have it's action recommendation statically set to **_go_**. When a policy rule result is whitelisted, it is still present in the output of the policy evaluation, but it's action is set to **_go_** and it is indicated that there was a whitelist match. The overarching idea though, is to give developers, ops, and security team members an effective mechanism for ignoring vulnerability matches that are known to be false positive, or ignoring vulnerabilities on specific packages (if they have been patched), or any other agreed upon reason for creating a whitelist rule. 
 
-### Whitelist in Anchore Enterprise
+### Whitelists in Anchore Enterprise
 
 Within the Anchore Enterprise UI, navigating to the Whitelists tab will show the lists of whitelists that are currently present in the current policy bundle. 
 
 ![alt text](images/whitelist-tab.png)
+
+Selecting the edit button on the far right under the action column, will bring up the whitelist editor where users have the ability to create new whitelist entries or modify existing ones. 
+
+![alt text](/images/whitelist-items.png)
 
