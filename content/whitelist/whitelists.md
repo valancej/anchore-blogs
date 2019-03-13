@@ -67,6 +67,6 @@ When working with the security risks associated with both operating system and n
 
 ![alt text](images/whitelist-ro.png)
 
-When working with whitelisted items, it is important to remember that this does not mean that there are not security issues, only that these particular items now have a **_go_** output associated with it. Remember to use carefully and in moderation. Lastly, as with any CVE remediation and policy rule creation, consult across your development, security, and operations teams to collectively come up with acceptable actions that best suit your organization's security and compliance requirements.
+When working with whitelisted items, it is important to remember that this does not mean there are no longer security issues, only that these particular items now have a **_go_** output associated with it. Remember to use carefully and in moderation. Lastly, as with any CVE remediation and policy rule creation, consult across your development, security, and operations teams to collectively come up with acceptable actions that best suit your organization's security and compliance requirements.
 
 Further information on [Anchore Enterprise](https://anchore.com/enterprise)can be found on our website. For other general questions please join our [community Slack channel](https://anchore.com/slack).
