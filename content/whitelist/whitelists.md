@@ -56,3 +56,7 @@ Through the UI, Anchore users have the option to upload a whitelist by selecting
 Anchore users can view the whitelisted entries in the Policy Evaluation table as shown below:
 
 ![alt text](images/whitelist-entries.png)
+
+Additionally, users can optionally Add / Remove a particular whitelist item as shown below:
+
+![alt text](images/whitelist-add.png)
