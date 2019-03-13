@@ -14,7 +14,7 @@ Selecting the edit button on the far right under the action column, will bring u
 
 ![alt text](images/whitelist-items.png)
 
-This example whitelist above is represented as JSON below: 
+The example whitelist above is represented as JSON below: 
 
 ```JSON
 {
@@ -36,3 +36,18 @@ This example whitelist above is represented as JSON below:
   "version": "1_0"
 }
 ```
+
+#### Components of a Whitelist in Anchore
+
+- **Gate:** The gate to whitelist matches from (ensures *trigger_ids* are not matched in the wrong context).
+- **Trigger Id:** The specific trigger result to match and whitelist. This id is gate/trigger specific as each trigger may have its own *trigger_id* format. Most commonly, the CVE trigger ids produced by the *vulnerability package* gate-trigger. The *trigger_id* may include wildcards for partial matches as shown with the second item.
+- **Id:** An identifier for the whitelist rule. Only needs to be unique within the whitelist object itself. 
+
+It is important to note that if a whitelist item matches a policy trigger output, the action for that particular output is set to **_go_** and the policy evaluation result will inform the user that the trigger output was matched for a whitelist item. 
+
+#### Uploading a Whitelist in Anchore Enterprise
+
+Through the UI, Anchore users have the option to upload a whitelist by selecting the Upload Whitelist button which brings up the following:
+
+![alt text](images/whitelist-upload.png)
+
