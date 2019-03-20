@@ -51,4 +51,6 @@ You can also create a cluster via the AWS CLI by running the following:
 
 Simply input your `--role-arn`, `subnetIds`, and `securityGroupIds` into the above command.
 
+Once your cluster has been created the console should look like the following:
 
+![alt-text](image/eks-active-cluster.png)
