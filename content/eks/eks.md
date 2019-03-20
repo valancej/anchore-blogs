@@ -53,4 +53,4 @@ Simply input your `--role-arn`, `subnetIds`, and `securityGroupIds` into the abo
 
 Once your cluster has been created the console should look like the following:
 
-![alt-text](image/eks-active-cluster.png)
+![alt-text](images/eks-active-cluster.png)
