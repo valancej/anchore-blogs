@@ -160,6 +160,10 @@ Events:
   Normal  EnsuredLoadBalancer   10m   service-controller  Ensured load balancer
 ```
 
+I can see the created load balancer by navigating to the EC2 console and selecting *Load Balancers*
+
+![alt text](load-balancer.png)
+
 Or better yet, hit the LoadBalancer Ingress: 
 
 ![alt text](images/nginx.png)
