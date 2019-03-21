@@ -6,7 +6,7 @@ In June of 2018, Amazon announced the general availability of their [Elastic Con
 
 ### Getting started
 
-For the scope of learning purposes, I thought I'd test out creating a EKS cluster, and launch a simple application. If you aren't completely familiar with Kubernetes I highly recommend checking out the [tutorials](https://kubernetes.io/docs/tutorials/kubernetes-basics/) section of the website just so some of the concepts and verbage I use make a little more sense. I also recommend reading about [**kubectl**](https://kubernetes.io/docs/reference/kubectl/overview/) which is the command line interface for running actions against Kubernetes clusters. 
+For the scope of learning purposes, I thought I'd test out creating a EKS cluster, and launching a simple application. If you aren't completely familiar with Kubernetes I highly recommend checking out the [tutorials](https://kubernetes.io/docs/tutorials/kubernetes-basics/) section of the website just so some of the concepts and verbage I use make a little more sense. I also recommend reading about [**kubectl**](https://kubernetes.io/docs/reference/kubectl/overview/) which is the command line interface for running actions against Kubernetes clusters. 
 
 In addition to the above reading, you should complete the following:
 
@@ -22,7 +22,7 @@ There are a couple of ways to create an EKS cluster, with the console or with th
 
 To begin, navigate here: https://us-east-2.console.aws.amazon.com/eks/home#/clusters and select *create cluster*.
 
-You'll see several pieces of information you'll need to provide AWS for it to create your cluster successfully. 
+There are several pieces of information you'll need to provide AWS for it to create your cluster successfully. 
 
 - Cluster name (should be a unique name for your cluster)
 - Role name
@@ -166,5 +166,7 @@ Or better yet, hit the LoadBalancer Ingress:
 
 ### Conclusion
 
+There is certainly a learning curve to Amazon EKS that requires a bit of knowledge on several different Amazon services in order to manage Kubernetes clusters effectively. By far the longest piece of this was getting the cluster set up. Any AWS-heavy users should be thrilled about the ability to make running containerized workloads in Kubernetes easy and cost-effective on the most popular cloud provider. With AWS still reigning as the top public cloud provider, it is only fitting Amazon created a service to adhere to the tremendous amount of container and Kubernetes adoption over the past two years. 
 
+At Anchore, I'm always excited to work with our users and customers leveraging Amazon EKS to run Anchore. To find out more about how Anchore can be deployed, I highly recommend checking out our [helm chart](https://github.com/helm/charts/tree/master/stable/anchore-engine) and reading more about [Helm on EKS](https://medium.com/devopslinks/using-helm-to-install-application-onto-aws-eks-36840ff84555)
 
