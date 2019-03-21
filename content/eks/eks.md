@@ -134,7 +134,7 @@ Then I simply create the service.
 
 To verify, I can describe my service.
 
-`kubectl describe service mylbservice`
+`kubectl describe service mylbservicet`
 
 Which outputs the following:
 
@@ -168,7 +168,7 @@ Or better yet, hit the LoadBalancer Ingress:
 
 ![alt text](images/nginx.png)
 
-### Conclusion
+## Conclusion
 
 There is certainly a learning curve to Amazon EKS that requires a bit of knowledge on several different Amazon services in order to manage Kubernetes clusters effectively. By far the longest piece of this was getting the cluster set up. Any AWS-heavy users should be thrilled about the ability to make running containerized workloads in Kubernetes easy and cost-effective on the most popular cloud provider. With AWS still reigning as the top public cloud provider, it is only fitting Amazon created a service to adhere to the tremendous amount of container and Kubernetes adoption over the past two years. 
 
