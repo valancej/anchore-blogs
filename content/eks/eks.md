@@ -134,7 +134,7 @@ Then I simply create the service.
 
 To verify, I can describe my service.
 
-`kubectl describe service`
+`kubectl describe service mylbservice`
 
 Which outputs the following:
 
