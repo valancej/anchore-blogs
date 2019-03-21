@@ -1,5 +1,7 @@
 # Introduction to EKS
 
+![alt text](images/aws-eks.jpeg)
+
 In June of 2018, Amazon announced the general availability of their [Elastic Container Service for Kubernetes](https://aws.amazon.com/blogs/aws/amazon-eks-now-generally-available/). Given that at Anchore we deliver our products as Docker container images, it came as no surprise to us that our users and customers would begin deploying our software on EKS. Since Kubernetes, Kubernetes on AWS, and Anchore on EKS adoption have increased, I thought it best to give EKS a test run to gain some knowledge. 
 
 ### Getting started
@@ -163,4 +165,6 @@ Or better yet, hit the LoadBalancer Ingress:
 ![alt text](images/nginx.png)
 
 ### Conclusion
+
+
 
