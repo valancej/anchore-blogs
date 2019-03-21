@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "ingress"
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+  labels:
+    app: demoapp
+spec:
+  rules:
+  - host: jv-anchore-demo.net
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: myservice
+          servicePort: 80
+  - host: jv-anchore-demo.net
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: helloapp-service
+          servicePort: 80

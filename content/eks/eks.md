@@ -104,6 +104,63 @@ I can also view them in the EC2 console:
 
 ![alt text](images/worker-nodes.png)
 
+### Working with Services
+
+In Kubernetes, a LoadBalancer service is a service that points to external load balancers that are not in you kubernetes clusters. In the case of AWS, and this blog, an external load balancer (ELB) will be created automatically when I create a LoadBalancer service.
+
+In order to do this, I must first define my service like so:
+
+```YAML
+# my-loadbalancer-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mylbservice
+spec:
+  type: LoadBalancer
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+```
+
+Then I simply create the service.
+
+`kubectl create -f my-loadbalancer-service.yaml`
+
+To verify, I can describe my service.
+
+`kubectl describe service`
+
+Which outputs the following:
+
+```
+Name:                     mylbservice
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=nginx
+Type:                     LoadBalancer
+IP:                       172.20.16.171
+LoadBalancer Ingress:     a0564b91c4b7711e99cfb0a558a37aa8-1932902294.us-east-2.elb.amazonaws.com
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  32005/TCP
+Endpoints:                10.0.1.100:80,10.0.1.199:80,10.0.3.19:80
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:
+  Type    Reason                Age   From                Message
+  ----    ------                ----  ----                -------
+  Normal  EnsuringLoadBalancer  10m   service-controller  Ensuring load balancer
+  Normal  EnsuredLoadBalancer   10m   service-controller  Ensured load balancer
+```
+
+Or better yet, hit the LoadBalancer Ingress: 
+
+![alt text](images/nginx.png)
 
 ### Conclusion
 
