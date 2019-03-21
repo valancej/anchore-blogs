@@ -162,7 +162,7 @@ Events:
 
 I can see the created load balancer by navigating to the EC2 console and selecting *Load Balancers*
 
-![alt text](load-balancer.png)
+![alt text](images/load-balancer.png)
 
 Or better yet, hit the LoadBalancer Ingress: 
 
