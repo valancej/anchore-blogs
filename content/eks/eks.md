@@ -2,13 +2,13 @@
 
 ![alt text](images/aws-eks.jpeg)
 
-In June of 2018, Amazon announced the general availability of their [Elastic Container Service for Kubernetes](https://aws.amazon.com/blogs/aws/amazon-eks-now-generally-available/). Given that at Anchore we deliver our products as Docker container images, it came as no surprise to us that our users and customers would begin deploying our software on EKS. Since Kubernetes, Kubernetes on AWS, and Anchore on EKS adoption have increased, I thought it best to give EKS a test run to gain some knowledge. 
+In June of 2018, Amazon announced the general availability of their [Elastic Container Service for Kubernetes](https://aws.amazon.com/blogs/aws/amazon-eks-now-generally-available/). Given that at Anchore we deliver our products as Docker container images, it came as no surprise to us that our users and customers would begin deploying our software on EKS. Since Kubernetes, Kubernetes on AWS, and Anchore on EKS adoption have all increased, I thought it best to give EKS a shot. 
 
 ### Getting started
 
 For the scope of learning purposes, I thought I'd test out creating a EKS cluster, and launching a simple application. If you aren't completely familiar with Kubernetes I highly recommend checking out the [tutorials](https://kubernetes.io/docs/tutorials/kubernetes-basics/) section of the website just so some of the concepts and verbage I use make a little more sense. I also recommend reading about [**kubectl**](https://kubernetes.io/docs/reference/kubectl/overview/) which is the command line interface for running actions against Kubernetes clusters. 
 
-In addition to the above reading, you should complete the following:
+In addition to the above reading, I also recommend the following:
 
 - [Install kubectl](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html)
 - [Install aws-iam-authenticator for Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html)
