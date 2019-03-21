@@ -91,7 +91,7 @@ data:
 
 **Note:** The ARN of instance role is the **NodeInstanceRole** value you can see in the output of the creation of your CloudFormation stack.
 
-Next, apply the configuration: `kubectl apply -f aws-auth-cm.yaml` and view pods: `kubectl get nodes`
+Next, apply the configuration: `kubectl apply -f aws-auth-cm.yaml` and view the nodes: `kubectl get nodes`
 
 ```
 NAME                                       STATUS    ROLES     AGE       VERSION
@@ -99,6 +99,8 @@ ip-10-0-1-112.us-east-2.compute.internal   Ready     <none>    3m        v1.11.5
 ip-10-0-1-36.us-east-2.compute.internal    Ready     <none>    3m        v1.11.5
 ip-10-0-3-21.us-east-2.compute.internal    Ready     <none>    3m        v1.11.5
 ```
+
+I can also view them in the EC2 console:
 
 ![alt text](images/worker-nodes.png)
 
