@@ -29,7 +29,7 @@ $ docker ps | grep bad_container
 3bd970d05f16        jvalance/node_critical_fail     "/bin/sh -c 'node /h…"   13 seconds ago      Up 12 seconds         22/tcp, 8081/tcp         bad_container
 ```
 
-and now `exec` into it with the following: `docker exec -ti --name bad_container /bin/bash` to bring up a shell. Then run the `env` command:
+and now `exec` into it with the following: `docker exec -ti 3bd970d05f16 /bin/bash` to bring up a shell. Then run the `env` command:
 
 ```
 # env 
@@ -47,7 +47,7 @@ _=/usr/bin/env
 
 Now you can see that I've just given anyone with access to this container the ability to grab any environment variable I've defined with the `ENV` instruction.
 
-Similarly with the `docker inspect command`:
+Similarly with the `docker inspect` command:
 
 ```
 $ docker inspect 3bd970d05f16 -f "{{json .Config.Env}}"
