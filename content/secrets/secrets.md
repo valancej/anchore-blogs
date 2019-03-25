@@ -1,6 +1,6 @@
-# Identifying secrets with Anchore
+# Secrets enforcement with Anchore
 
-Working with containerized applications inherently brings up the question of how to best give these applications access to any sensitive information they may need. This sensitive information can often be in the form of secrets, passwords, or other credentials. This week I decided to explore a couple of bad practices / common shortcuts, and some simple checks to integrate into your testing to promote a more polished security model for container images. 
+Working with containerized applications inherently brings up the question of how to best give these applications access to any sensitive information they may need. This sensitive information can often be in the form of secrets, passwords, or other credentials. This week I decided to explore a couple of bad practices / common shortcuts and some simple checks to integrate into your testing to promote a more polished security model for container images. 
 
 Historically, I've seen a couple "don'ts" for giving containers access to credentials: 
 
@@ -11,7 +11,7 @@ The first should be an obvious no. Including this sensitive information in any s
 
 ### Using the ENV instruction
 
-Below is a quick example of using the `ENV` instruction to define a variable for called `AWS_SECRET_KEY`. Both AWS Access Keys consist of two parts: an access key ID and a secret access key. These credentials can be used with AWS CLI or API operations are should be kept private. 
+Below is a quick example of using the `ENV` instruction to define a variable called `AWS_SECRET_KEY`. Both AWS Access Keys consist of two parts: an access key ID and a secret access key. These credentials can be used with AWS CLI or API operations and should be kept private. 
 
 ```Dockerfile
 FROM node:6
@@ -22,7 +22,7 @@ COPY ./app/ /home/node/app/
 ENV AWS_SECRET_KEY="1234q38rujfkasdfgws"
 ```
 
-For arguments sake, lets pretend I built this image and ran the container with the following command: `docker run --name bad_container -d jvalance/node_critical_fail`
+For arguments sake, let’s pretend I built this image and ran the container with the following command: `docker run --name bad_container -d jvalance/node_critical_fail`
 
 ```
 $ docker ps | grep bad_container
@@ -67,7 +67,7 @@ COPY ./app/ /home/node/app/
 ENV AWS_SECRET_KEY="1234q38rujfkasdfgws"
 ```
 
-Here we are copying the contents of the app directory into home/node/app inside the image. Why is this bad? Here's an image of the directory struture:
+Here we are copying the contents of the app directory into home/node/app inside the image. Why is this bad? Here's an image of the directory structure:
 
 ![alt text](images/directory.png)
 
@@ -97,11 +97,11 @@ aws_access_key_id = 12345678901234567890
 aws_secret_access_key = 1a2b3c4d5e6f1a2b3c4d5e6f1a2b3c4d5e6f1a2b
 ```
 
-### Checking for the above with image inspection
+### Checking for the above with Anchore
 
 At Anchore, a core focus of ours is centered around conducting a deep image inspection to give users comprehensive insight into the contents of their container images, and to provide users the ability to define flexible policy rules to enforce security and best-practices.
 
-Using the policy mechanisms of anchore, users can define a collection of checks, whitelists, and mappings (encapsulated as a self-contained anchore policy bundle document). Anchore policy bundles can then be authored to encode a variety of rules, including checks within (but not limited to) Dockerfile line checks and presense of credentials.
+Using the policy mechanisms of Anchore, users can define a collection of checks, whitelists, and mappings (encapsulated as a self-contained Anchore policy bundle document). Anchore policy bundles can then be authored to encode a variety of rules, including checks within (but not limited to) Dockerfile line checks and presence of credentials. Although, I will never recommend the bad practices used in the above examples for secrets, we should be checking for them nonetheless. 
 
 #### Policy bundle
 
@@ -113,7 +113,7 @@ A policy bundle is a single JSON document, which is composed of:
 - Whitelisted Images
 - Blacklisted Images
 
-The **policies** of a bundle define the checks to make against an image and the actions to recommend if tthe checks to find a match. 
+The **policies** component of a bundle define the checks to make against an image and the actions to recommend if the checks to find a match. 
 
 Example policy component of a policy bundle:
 
@@ -158,6 +158,21 @@ The first policy rule uses the `dockerfile` gate and instruction trigger to look
 
 The second policy rule uses the `secret scans` gate and content regex checks trigger to look for AWS_SECRET_KEY and AWS_ACCESS_KEY within the container image. 
 
+It it worth noting that there is an `analyzer_config.yaml` file which is taking care of the regex definitions. See [here](https://github.com/anchore/anchore-engine/blob/master/anchore_engine/conf/analyzer_config.yaml).
+
+For the purposes of this post I've analyzed an image that includes the two bad practices discussed earlier, and evaluated the analyzed image against a policy bundle which contains the rule definitions above. It should catch the poor practices!
+
 Here is a screenshot of the Anchore Enterprise UI Policy Evaluation table:
 
 ![alt text](images/secrets-ui.png)
+
+The check output column clearly informs us what Anchore found for each particular trigger ID line item and importantly, the **STOP** action which helps to determine the final result of the policy evaluation.
+
+We can see very clearly that these policy rule definitions have caught both the `ENV` variable and credentials file. If this were plugged into a continous integration pipeline, we could fail the build on this particular container image, and put the responsibility on the developer to fix, rebuild, and never ship this image to a production registry. 
+
+### Putting this in practice
+
+In summary, it is extremely important to put checks in-place with a tool like Anchore to align with your container image build frequency. For secrets management, an overall best practice I recommend is using a secret store like [Vault](https://www.hashicorp.com/products/vault/) to handle the storage of sensitive data. Depending on the orchestrator you are using for your containers, there are some options. For Kubernetes, there is [Kubernetes Vault](https://github.com/Boostport/kubernetes-vault). Staying with the Hashicorp suite, there are some options here as well for dynamic secrets: [Vault Integration and Retrieving Dynamic Secrets](https://www.nomadproject.io/guides/operations/vault-integration/index.html). 
+
+The above is an excellent system to have in place. I will continue to advocate for including image scanning and policy enforcement as a mandatory step in continuous integration pipelines, because it directly aligns with the practice of bringing security as far left in the development lifecycle as possible to catch issues early. Taking a step back to plan and put in place solutions for managing secrets for your containers, and securing your images, will drastically improve your container security stance from end to end and allow you to deploy with confidence.
+
