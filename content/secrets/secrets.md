@@ -1,4 +1,4 @@
-# Secrets enforcement with Anchore
+# Identifying secrets with Anchore 
 
 Working with containerized applications inherently brings up the question of how to best give these applications access to any sensitive information they may need. This sensitive information can often be in the form of secrets, passwords, or other credentials. This week I decided to explore a couple of bad practices / common shortcuts and some simple checks to integrate into your testing to promote a more polished security model for container images. 
 
