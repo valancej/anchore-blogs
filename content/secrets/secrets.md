@@ -96,3 +96,68 @@ api_key = 0349r5ufjdkl45
 aws_access_key_id = 12345678901234567890
 aws_secret_access_key = 1a2b3c4d5e6f1a2b3c4d5e6f1a2b3c4d5e6f1a2b
 ```
+
+### Checking for the above with image inspection
+
+At Anchore, a core focus of ours is centered around conducting a deep image inspection to give users comprehensive insight into the contents of their container images, and to provide users the ability to define flexible policy rules to enforce security and best-practices.
+
+Using the policy mechanisms of anchore, users can define a collection of checks, whitelists, and mappings (encapsulated as a self-contained anchore policy bundle document). Anchore policy bundles can then be authored to encode a variety of rules, including checks within (but not limited to) Dockerfile line checks and presense of credentials.
+
+#### Policy bundle
+
+A policy bundle is a single JSON document, which is composed of:
+
+- **Policies**
+- Whitelists
+- Mappings
+- Whitelisted Images
+- Blacklisted Images
+
+The **policies** of a bundle define the checks to make against an image and the actions to recommend if tthe checks to find a match. 
+
+Example policy component of a policy bundle:
+
+```JSON
+"name": "Critical Security Policy",
+  "policies": [
+    {
+      "comment": "Critical vulnerability,  secrets, and best practice violations",
+      "id": "48e6f7d6-1765-11e8-b5f9-8b6f228548b6",
+      "name": "default",
+      "rules": [
+        {
+          "action": "STOP",
+          "gate": "dockerfile",
+          "id": "38428d50-9440-42aa-92bb-e0d9a03b662d",
+          "params": [
+            {
+              "name": "instruction",
+              "value": "ENV"
+            },
+            {
+              "name": "check",
+              "value": "like"
+            },
+            {
+              "name": "value",
+              "value": "AWS_.*KEY"
+            }
+          ],
+          "trigger": "instruction"
+        },
+        {
+          "action": "STOP",
+          "gate": "secret_scans",
+          "id": "509d5438-f0e3-41df-bb1a-33013f23e31c",
+          "params": [],
+          "trigger": "content_regex_checks"
+        },...
+```
+
+The first policy rule uses the `dockerfile` gate and instruction trigger to look for AWS environment variables that may be defined in the Dockerfile.
+
+The second policy rule uses the `secret scans` gate and content regex checks trigger to look for AWS_SECRET_KEY and AWS_ACCESS_KEY within the container image. 
+
+Here is a screenshot of tthe Anchore Enterprise UI Policy Evaluation table:
+
+![alt text](images/secrets-ui.png)
