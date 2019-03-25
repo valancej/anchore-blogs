@@ -84,7 +84,7 @@ aws_access_key_id = 12345678901234567890
 aws_secret_access_key = 1a2b3c4d5e6f1a2b3c4d5e6f1a2b3c4d5e6f1a2b
 ```
 
-Same as I did before, I'll try to find it in the container. 
+Same as I did before, I'll try to find the creds in the container. 
 
 ```
 /home/node/app# cat .aws/credentials 
