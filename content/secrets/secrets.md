@@ -158,6 +158,6 @@ The first policy rule uses the `dockerfile` gate and instruction trigger to look
 
 The second policy rule uses the `secret scans` gate and content regex checks trigger to look for AWS_SECRET_KEY and AWS_ACCESS_KEY within the container image. 
 
-Here is a screenshot of tthe Anchore Enterprise UI Policy Evaluation table:
+Here is a screenshot of the Anchore Enterprise UI Policy Evaluation table:
 
 ![alt text](images/secrets-ui.png)
