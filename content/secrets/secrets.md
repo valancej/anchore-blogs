@@ -4,10 +4,10 @@ Working with containerized applications inherently brings on the question of how
 
 Historically, I've seen a couple "don'ts" for giving containers access to credentials: 
 
-- Including directly in the source code
+- Including directly in the contents of the image
 - Defining a secret in a Dockerfile with `ENV` instruction
 
-The first should be an obvious no. Including this sensitive information in any source code that is managed by an SCM and eventually baked into the build image, especially any public repositories, is giving anyone access to these repos those passwords, keys, creds, etc. I've also seen this placement of secrets inside of the container image using the `ENV` instruction.  `Dockerfiles` are likely managed somewhere, and exposing them in clear text is a practice that should be avoided. A recommended best practice is not only to check for keys and passwords as your images are being built, but implement the proper set of tools for true secrets management (not the above "don'ts"). There is an excellent article written by Hashicorp on [Why We Need Dynamic Secrets](https://www.hashicorp.com/blog/why-we-need-dynamic-secrets) which is a good place to start. 
+The first should be an obvious no. Including sensitive information within a built image, is giving anyone who has access to the image, access to those passwords, keys, creds, etc. I've also seen this placement of secrets inside of the container image using the `ENV` instruction.  `Dockerfiles` are likely managed somewhere, and exposing them in clear text is a practice that should be avoided. A recommended best practice is not only to check for keys and passwords as your images are being built, but implement the proper set of tools for true secrets management (not the above "don'ts"). There is an excellent article written by Hashicorp on [Why We Need Dynamic Secrets](https://www.hashicorp.com/blog/why-we-need-dynamic-secrets) which is a good place to start. 
 
 ### Using the ENV instruction
 
@@ -54,7 +54,7 @@ $ docker inspect 3bd970d05f16 -f "{{json .Config.Env}}"
 ["PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin","NODE_VERSION=6.16.0","YARN_VERSION=1.12.3","AWS_SECRET_KEY=1234q38rujfkasdfgws"]
 ```
 
-### Including in source code
+### Storing credentials in files inside the image
 
 Back to our example of a bad Dockerfile:
 
