@@ -17,3 +17,15 @@ Given that Kubernetes is being used widely in production environments already, s
 ### Staying up to date
 
 As with any software component, updating to the latest version of software will greatly reduce the risk of your system being compromised. When running unpatched software components with known vulnerabilities, hackers are typically well-aware, and ready to exploit these weaknesses. One of the more recently well-known vulnerabilities discovered in Kubernetes was [CVE-2018-1002105](https://nvd.nist.gov/vuln/detail/CVE-2018-1002105). If you are running managed Kubernetes in a cloud provider, these managed service providers make it simple to upgrade to the latest version. In addition to running the latest version of Kubernetes, it is imperitive to stay up to date on the software components that make up the applications you are running. Providing your teams with the necessary tools for SAST for proprietary source code and container image scanning at the CI or container registry layer will help ensure that you are not running vulnerable software in Kubernetes environments.
+
+### Role-based Access Control
+
+Kubernetes RBAC allows users to exercise fine-grained control over how users access the API resources running on your cluster. Cloud providers will likely have RBAC enabled by default, but it is a good practice to check to verify that your Kubernetes deployment has enabled this feature. Generally speaking, it is good practice to apply the principle of least privilege to make sure users and services only have the access needed to do their jobs. You can create RBAC permission that apply to your entire cluster, or to specific namespaces within your cluster. For more information of RBAC in Kubernetes, I recommend reading the documentation on [Using RBAC Authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/). If you are using a cloud provider to manager Kubernetes I also recommend reading up on how each of these providers work with access and authentication as you may occasionally run into permission issues:
+
+- [AWS Managing Cluster Authentication](https://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html)
+- [Making Sense of Kubernetes RBAC and IAM Roles on GKE](https://medium.com/uptime-99/making-sense-of-kubernetes-rbac-and-iam-roles-on-gke-914131b01922)
+- [Access and identity options for Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/concepts-identity)
+
+#### Principle of least privilege a step further
+
+Above I mentioned applying the principle of least privilege to RBAC in Kubernetes. However, this same principle can be applied to your software components as well. By restricting access so components can only access the information and resources they need to operate correctly, the blast radius of attack is greatly reduced should one occur. 
