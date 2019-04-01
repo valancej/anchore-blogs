@@ -1,5 +1,7 @@
 # Introduction to Kubernetes Security
 
+![kube logo](images/kubernetes.png) ![lock](images.lock.png)
+
 ## Background
 
 Over the past couple of years the software community has seen the rise of [Kubernetes](https://kubernetes.io/). First developed by Google, Kubernetes is the most popular open-source container management tool which automates container deployment, container scaling, and container load balancing. A few of the major features and benefits of Kubernetes are: 
