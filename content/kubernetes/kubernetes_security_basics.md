@@ -2,7 +2,15 @@
 
 ## Background
 
-Over the past couple of years the software community has seen the rise of [Kubernetes](https://kubernetes.io/). First developed by Google, Kubernetes is the most popular open-source container management tool which automates container deployment, container scaling, and container load balancing. A few of the major features and benefits of Kubernetes are: Automatic Binpacking, Service Discovery & Load Balancing, Storage Orchestration, Self Healing, Horizonal Scaling, and several others. Kubernetes is backed back a large community and hosted by the [Cloud Native Computing Foundation](https://www.cncf.io/). When organizations increase their use of containers some of the challenges they being to run into include: Automated scaling up and down of containers, container management and deployment, distributing load between containers, etc. To address these issues, it generally becomes necessary to implement a container orchestration platform to reduce operational burden. Kubernetes can be run on-premises or on any one of the major cloud providers (AWS, Azure, GCP, IBM Cloud).
+Over the past couple of years the software community has seen the rise of [Kubernetes](https://kubernetes.io/). First developed by Google, Kubernetes is the most popular open-source container management tool which automates container deployment, container scaling, and container load balancing. A few of the major features and benefits of Kubernetes are: 
+
+- Automatic Binpacking
+- Service Discovery & Load Balancing
+- Storage Orchestration
+- Self Healing
+- Horizonal Scaling
+
+Kubernetes is also backed by a large community and hosted by the [Cloud Native Computing Foundation](https://www.cncf.io/). When organizations increase their use of containers some of the challenges they being to run into include: Automated scaling up and down of containers, container management and deployment, distributing load between containers, etc. To address these issues, it generally becomes necessary to implement a container orchestration platform to reduce operational burden. Kubernetes can be run on-premises or on any one of the major cloud providers (AWS, Azure, GCP, IBM Cloud).
 
 Given that Kubernetes is being used widely in production environments already, securing these workloads should be a top priority. In this post, I will discuss a handful of common Kubernetes security basics and best practices to administer in order to avoid your clusters becoming compromised.  
 
