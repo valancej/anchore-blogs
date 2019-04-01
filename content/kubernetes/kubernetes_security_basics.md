@@ -1,6 +1,6 @@
 # Introduction to Kubernetes Security
 
-![kube logo](images/kubernetes.png) ![lock](images.lock.png)
+![kube logo](images/kubernetes.png) ![lock](images/lock.png)
 
 ## Background
 
