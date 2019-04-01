@@ -26,6 +26,24 @@ Kubernetes RBAC allows users to exercise fine-grained control over how users acc
 - [Making Sense of Kubernetes RBAC and IAM Roles on GKE](https://medium.com/uptime-99/making-sense-of-kubernetes-rbac-and-iam-roles-on-gke-914131b01922)
 - [Access and identity options for Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/concepts-identity)
 
+#### Role
+
+In the Kubernetes RBAC API, a role contains rules that represent a set of permissions. Below is an example Role in the default namespace that can be used to grant read access to pods: 
+
+```YAML
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: default
+  name: pod-reader
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]
+```
+
 #### Principle of least privilege a step further
 
 Above I mentioned applying the principle of least privilege to RBAC in Kubernetes. However, this same principle can be applied to your software components as well. By restricting access so components can only access the information and resources they need to operate correctly, the blast radius of attack is greatly reduced should one occur. 
+
+### A change in security
