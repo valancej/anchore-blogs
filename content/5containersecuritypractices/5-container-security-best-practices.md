@@ -4,7 +4,7 @@ In this post, I wanted to identify a few high-level security tips and best pract
 
 Now that we are clear on some of the high-level advantages, I will detail what a **container image** is. A container image is a collection of data that includes all files, software packages, and metadata needed to create a running instance of a container. In essence, an image is a template from which a container can be instantiated. Images are immutable, meaning, once they’ve been built, they cannot be changed. If someone were to make a change, a new image would be built as a result.
 
-### Use images from trusted sources
+## Use images from trusted sources
 
 Individuals and organizations should only work with images from trusted sources. Public images residing in Docker Hub may contain vulnerable software components, misconfiurations, or other security risks. Also, these images can be updated at any time, leading to the contents being in a state of flux. Developers relying on images from unreliable sources run the inherent danger of exposing their products, environments, and customers to any risks contained within these artifacts. 
 
