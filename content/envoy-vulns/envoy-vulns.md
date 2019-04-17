@@ -1,3 +1,3 @@
 # A closer look at Two Envoy Vulnerabilities (CVE-2019-9900 and CVE-2019-9901) and their relation to Istio
 
-In this post, I wanted to take a closer look at recent two vulnerabilites impacting [Envoy proxy](https://www.envoyproxy.io/) versions 1.9 and older ([CVE 2019-9900](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9900) and [CVE 2019-9901](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901)]). Since these two particular CVEs have been identified, they have also been patched in Envoy version 1.9.1. 
+In this post, I wanted to take a closer look at recent two vulnerabilites impacting [Envoy proxy](https://www.envoyproxy.io/) versions 1.9 and older ([CVE 2019-9900](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9900) and [CVE 2019-9901](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901)). Since these two particular CVEs have been identified, they have also been patched in Envoy version 1.9.1. 
