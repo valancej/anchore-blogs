@@ -14,9 +14,9 @@ Envoy Proxy is a modern, high-performance, small footprint edge and service prox
 
 The term service mesh is used to describe the network of microservices that make up such applications and the interactions between them. As a service mesh grows in size and complexity, it can become harder to understand and manage. Its requirements can include discovery, load balancing, failure recovery, metrics, and monitoring. A service mesh also often has more complex operational requirements, like A/B testing, canary rollouts, rate limiting, access control, and end-to-end authentication.
 
-Istio provides behavioral insights and operational control over the service mesh as a whole, offering a complete solution to satisfy the diverse requirements of microservice applications.
+**Istio** provides behavioral insights and operational control over the service mesh as a whole, offering a complete solution to satisfy the diverse requirements of microservice applications.
 
-An Istio service mesh is logically split into a data plane and a control plane.
+An **Istio service mesh** is logically split into a data plane and a control plane.
 
 - The data plane is composed of a set of intelligent proxies Envoy deployed as sidecars. These proxies mediate and control all network communication between microservices along with Mixer, a general-purpose policy and telemetry hub.
 
@@ -24,7 +24,7 @@ An Istio service mesh is logically split into a data plane and a control plane.
 
 #### Istio and Envoy
 
-Istio uses an extended version of the Envoy proxy. Envoy is deployed as a sidecar to the relevant service in the same Kubernetes pod. This deployment allows Istio to extract a wealth of signals about traffic behavior as attributes. Istio can, in turn, use these attributes in Mixer to enforce policy decisions, and send them to monitoring systems to provide information about the behavior of the entire mesh.
+**Istio** uses an extended version of the Envoy proxy. Envoy is deployed as a sidecar to the relevant service in the same Kubernetes pod. This deployment allows Istio to extract a wealth of signals about traffic behavior as attributes. Istio can, in turn, use these attributes in Mixer to enforce policy decisions, and send them to monitoring systems to provide information about the behavior of the entire mesh.
 
 ### CVE-2019-9900
 
