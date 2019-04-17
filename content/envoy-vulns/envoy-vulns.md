@@ -40,3 +40,6 @@ Envoy does not normalize HTTP URL paths in Envoy 1.9 and before. A remote attack
 
 View [Github Issue](https://github.com/envoyproxy/envoy/issues/6435).
 
+### Remediation
+
+As mentioned in the introduction, these two vulnerabilites have been patched in Envoy version 1.9.1, and correspondingly in the Envoy builds embedded in Istio 1.1.2 and Istio 1.0.7. The recommend steps for remediation are to upgrade to Envoy 1.9.1 or later, or additionally upgrade Istio 1.1.x deployments to 1.1.2 or Istio 1.0.x deployments to 1.0.7.
