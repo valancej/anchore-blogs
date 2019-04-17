@@ -16,6 +16,16 @@ The term service mesh is used to describe the network of microservices that make
 
 Istio provides behavioral insights and operational control over the service mesh as a whole, offering a complete solution to satisfy the diverse requirements of microservice applications.
 
+An Istio service mesh is logically split into a data plane and a control plane.
+
+- The data plane is composed of a set of intelligent proxies Envoy deployed as sidecars. These proxies mediate and control all network communication between microservices along with Mixer, a general-purpose policy and telemetry hub.
+
+- The control plane manages and configures the proxies to route traffic. Additionally, the control plane configures Mixers to enforce policies and collect telemetry.
+
+#### Istio and Envoy
+
+Istio uses an extended version of the Envoy proxy. Envoy is deployed as a sidecar to the relevant service in the same Kubernetes pod. This deployment allows Istio to extract a wealth of signals about traffic behavior as attributes. Istio can, in turn, use these attributes in Mixer to enforce policy decisions, and send them to monitoring systems to provide information about the behavior of the entire mesh.
+
 ### CVE-2019-9900
 
 Envoy expects that its HTTP codecs enforce RFC constraints on valid header values. In particular, it is expected that there are no embedded NUL characters in paths, header values or keys. 
