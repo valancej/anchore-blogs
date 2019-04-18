@@ -12,6 +12,8 @@ For more information on Envoy and a real-world example of its usage in practice,
 
 [Istio](https://istio.io/) is an open source service mesh that layers transparently onto existing distributed applications. It is also a platform, including APIs that let it integrate into any loggin platform, or telemetry or policy system. Istio lets you successfully, and efficiently, run a distributed microservice architecture, and provides a uniform way to secure, coneect, and monitor microservices.
 
+For a clear example on Istio, I recommend watching this video: [What is Istio?](https://www.youtube.com/watch?v=1iyFq2VaL5Y&t=21s)
+
 ##### What is a service mesh?
 
 The term service mesh is used to describe the network of microservices that make up such applications and the interactions between them. As a service mesh grows in size and complexity, it can become harder to understand and manage. Its requirements can include discovery, load balancing, failure recovery, metrics, and monitoring. A service mesh also often has more complex operational requirements, like A/B testing, canary rollouts, rate limiting, access control, and end-to-end authentication.
