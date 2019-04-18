@@ -32,14 +32,17 @@ Envoy expects that its HTTP codecs enforce RFC constraints on valid header value
 
 When parsing HTTP/1.x header values, Envoy 1.9.0 and before does not reject embedded zero characters (NUL, ASCII 0x0). This allows remote attackers crafting header values containing embedded NUL characters to potentially bypass header matching rules, gaining access to unauthorized resources.
 
-View [Github Issue](https://github.com/envoyproxy/envoy/issues/6434).
+View the CVE [Github Issue](https://github.com/envoyproxy/envoy/issues/6434).
 
 ### CVE-2019-9901
 
 Envoy does not normalize HTTP URL paths in Envoy 1.9 and before. A remote attacker may craft a path with a relative path, e.g. something/../admin, to bypass access control, e.g. a block on /admin. A backend server could then interpret the unnormalized path and provide an attacker access beyond the scope provided for by the access control policy.
 
-View [Github Issue](https://github.com/envoyproxy/envoy/issues/6435).
+View the CVE [Github Issue](https://github.com/envoyproxy/envoy/issues/6435).
 
 ### Remediation
 
-As mentioned in the introduction, these two vulnerabilites have been patched in Envoy version 1.9.1, and correspondingly in the Envoy builds embedded in Istio 1.1.2 and Istio 1.0.7. The recommend steps for remediation are to upgrade to Envoy 1.9.1 or later, or additionally upgrade Istio 1.1.x deployments to 1.1.2 or Istio 1.0.x deployments to 1.0.7.
+As mentioned in the introduction, these two vulnerabilites have been patched in Envoy version 1.9.1, and correspondingly in the Envoy builds embedded in Istio 1.1.2 and Istio 1.0.7. The recommend steps for remediation are as follows:
+
+- For Istio 1.1.x deployments: update to a minimum of [Istio 1.1.2](https://istio.io/about/notes/1.1.2/)
+- For Istio 1.0.x deployments: update to a minimum of [Istio 1.0.7](https://istio.io/about/notes/1.0.7/)
