@@ -28,6 +28,8 @@ An **Istio service mesh** is logically split into a data plane and a control pla
 
 - The control plane manages and configures the proxies to route traffic. Additionally, the control plane configures Mixers to enforce policies and collect telemetry.
 
+![alt text](images/arch.svg)
+
 #### Istio and Envoy
 
 **Istio** uses an extended version of the Envoy proxy. Envoy is deployed as a sidecar to the relevant service in the same Kubernetes pod. This deployment allows Istio to extract a wealth of signals about traffic behavior as attributes. Istio can, in turn, use these attributes in Mixer to enforce policy decisions, and send them to monitoring systems to provide information about the behavior of the entire mesh.
