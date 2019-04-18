@@ -1,6 +1,6 @@
 # A closer look at Two Envoy Vulnerabilities (CVE-2019-9900 and CVE-2019-9901) and their impact on Istio
 
-In this post, I wanted to take a closer look at recent two vulnerabilites impacting [Envoy Proxy](https://www.envoyproxy.io/) versions 1.9.0 and older ([CVE 2019-9900](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9900) and [CVE 2019-9901](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901)). Since these two particular CVEs have been identified, they have also been patched in Envoy version 1.9.1. Before diving into the specifics of the vulnerabilites and their impact, I wanted to give some general background on Envoy and Istio.
+In this post, I wanted to take a closer look at recent two vulnerabilities impacting [Envoy Proxy](https://www.envoyproxy.io/) versions 1.9.0 and older ([CVE 2019-9900](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9900) and [CVE 2019-9901](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901)). Since these two particular CVEs have been identified, they have also been patched in Envoy version 1.9.1. Before diving into the specifics of the vulnerabilities and their impact, I wanted to give some general background on Envoy and Istio.
 
 #### What is Envoy?
 
@@ -10,7 +10,7 @@ For more information on Envoy and a real-world example of its usage in practice,
 
 #### What is Istio?
 
-[Istio](https://istio.io/) is an open source service mesh that layers transparently onto existing distributed applications. It is also a platform, including APIs that let it integrate into any loggin platform, or telemetry or policy system. Istio lets you successfully, and efficiently, run a distributed microservice architecture, and provides a uniform way to secure, coneect, and monitor microservices.
+[Istio](https://istio.io/) is an open source service mesh that layers transparently onto existing distributed applications. It is also a platform, including APIs that let it integrate into any logging platform, or telemetry or policy system. Istio lets you successfully, and efficiently, run a distributed microservice architecture, and provides a uniform way to secure, connect, and monitor microservices.
 
 For a clear example on Istio, I recommend watching this video: [What is Istio?](https://www.youtube.com/watch?v=1iyFq2VaL5Y&t=21s)
 
@@ -42,19 +42,20 @@ When parsing HTTP/1.x header values, Envoy 1.9.0 and before does not reject embe
 
 Based on current information, this only affects HTTP/1.1 traffic. If this is not structurally possible in your network or configuration, then it is unlikely that this vulnerability applies.
 
-View the CVE [Github Issue](https://github.com/envoyproxy/envoy/issues/6434).
+View the CVE [GitHub Issue](https://github.com/envoyproxy/envoy/issues/6434).
 
 ### CVE-2019-9901
 
 Envoy does not normalize HTTP URL paths in Envoy 1.9 and before. A remote attacker may craft a path with a relative path, e.g. something/../admin, to bypass access control, e.g. a block on /admin. A backend server could then interpret the unnormalized path and provide an attacker access beyond the scope provided for by the access control policy.
 
-View the CVE [Github Issue](https://github.com/envoyproxy/envoy/issues/6435).
+View the CVE [GitHub Issue](https://github.com/envoyproxy/envoy/issues/6435).
 
 An attacker could bypass access control and could also circumvent DoS prevention system such as rate limiting and authorization for a given backend server.
 
 ### Remediation
 
-As mentioned in the introduction, these two vulnerabilites have been patched in Envoy version 1.9.1, and correspondingly in the Envoy builds embedded in Istio 1.1.2 and Istio 1.0.7. The recommend steps for remediation are as follows:
+As mentioned in the introduction, these two vulnerabilities have been patched in Envoy version 1.9.1, and correspondingly in the Envoy builds embedded in Istio 1.1.2 and Istio 1.0.7. The recommend steps for remediation are as follows:
 
 - For Istio 1.1.x deployments: update to a minimum of [Istio 1.1.2](https://istio.io/about/notes/1.1.2/)
 - For Istio 1.0.x deployments: update to a minimum of [Istio 1.0.7](https://istio.io/about/notes/1.0.7/)
+
