@@ -6,6 +6,8 @@ In this post, I wanted to take a closer look at recent two vulnerabilites impact
 
 Envoy Proxy is a modern, high-performance, small footprint edge and service proxy. Envoy is most comparable to software load balancers such as NGINX and HAProxy. Originally written and deployed at Lyft, Envoy is now an official [graduated project](https://www.cncf.io/announcement/2018/11/28/cncf-announces-envoy-graduation/) of the [Cloud Native Computing Foundation](https://www.cncf.io/). 
 
+For more information on Envoy and a real-world example of its usage in practice, I recommend watching this video: [The Mechanics of Deploying Envoy at Lyft](https://www.youtube.com/watch?v=IeJDjq-COjk).
+
 #### What is Istio?
 
 [Istio](https://istio.io/) is an open source service mesh that layers transparently onto existing distributed applications. It is also a platform, including APIs that let it integrate into any loggin platform, or telemetry or policy system. Istio lets you successfully, and efficiently, run a distributed microservice architecture, and provides a uniform way to secure, coneect, and monitor microservices.
