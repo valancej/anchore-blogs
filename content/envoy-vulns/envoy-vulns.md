@@ -36,6 +36,8 @@ Envoy expects that its HTTP codecs enforce RFC constraints on valid header value
 
 When parsing HTTP/1.x header values, Envoy 1.9.0 and before does not reject embedded zero characters (NUL, ASCII 0x0). This allows remote attackers crafting header values containing embedded NUL characters to potentially bypass header matching rules, gaining access to unauthorized resources.
 
+Based on current information, this only affects HTTP/1.1 traffic. If this is not structurally possible in your network or configuration, then it is unlikely that this vulnerability applies.
+
 View the CVE [Github Issue](https://github.com/envoyproxy/envoy/issues/6434).
 
 ### CVE-2019-9901
@@ -43,6 +45,8 @@ View the CVE [Github Issue](https://github.com/envoyproxy/envoy/issues/6434).
 Envoy does not normalize HTTP URL paths in Envoy 1.9 and before. A remote attacker may craft a path with a relative path, e.g. something/../admin, to bypass access control, e.g. a block on /admin. A backend server could then interpret the unnormalized path and provide an attacker access beyond the scope provided for by the access control policy.
 
 View the CVE [Github Issue](https://github.com/envoyproxy/envoy/issues/6435).
+
+An attacker could bypass access control and could also circumvent DoS prevention system such as rate limiting and authorization for a given backend server.
 
 ### Remediation
 
