@@ -21,5 +21,4 @@ Anchore addresses these issues by providing comprehensive coverage of container 
 
 ### Conclusion
 
-It is clear that the importance of static analysis of container images, in particular identifying known vulnerabilites in software packages, is well known at both Anchore and CoreOS Clair. 
-
+It is clear that the importance of static analysis of container images, in particular identifying known vulnerabilites in software packages, is well known at both Anchore and CoreOS Clair. As a potential user or customer deciding on a container security tool, I recommend uncovering some key bullet points you'd like to see in an ideal solution, and aligning those points with core principles and problems certain vendors solve. 
