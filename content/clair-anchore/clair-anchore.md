@@ -19,6 +19,8 @@ Our most succesful open source users and Enteprise customers have highlighted th
 
 Anchore addresses these issues by providing comprehensive coverage of container image contents that extend beyond vulnerability scanning. This includes secrets scanning, misconfigurations, and compliance best practices. In addition to the identification of more than just operating system packages and third party libraries, Anchore provides the user with action results from a policy engine that can be used to block builds, generate reports, or alert. When it comes to particular industries such as Government, Healthcare, and Financial services, compliance is high on the priority list. Typically, these verticals will have strict policy checks they need enforced and critical solutions that need certification. To accomplish this, leveraging container native security tools that provide a complete suite of checks out of the box, becomes a requirememt. 
 
+In addition to our core principle centered around policy enforcement, we also saw more open source users asking for enterprise features. Anchore Enterprise fulfills specific needs of these users by providing a GUI client, RBAC, on-premise data feed aggregation service, high quality vulnerability data from proprietary sources, and full enterprise-grade support.
+
 ### Conclusion
 
 It is clear that the importance of static analysis of container images, in particular identifying known vulnerabilites in software packages, is well known at both Anchore and CoreOS Clair. As a potential user or customer deciding on a container security tool, I recommend uncovering some key bullet points you'd like to see in an ideal solution, and aligning those points with core principles and problems certain vendors solve. 
