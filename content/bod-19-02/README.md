@@ -28,3 +28,11 @@ Anchore Enterprise customers can view identified vulnerabilities for analyzed im
 ![anchore-image](images/anchore-enterprise-image.png)
 
 **Note:** A list of vulnerabilities can also be viewed using the [Anchore CLI](https://github.com/anchore/anchore-cli) which can be configured to communicate with a running Anchore service.
+
+### Viewing vulnerabilities in the build phase
+
+Anchore scanning can be integrated directly into the build phase of the software development lifecycle to identify security vulnerabilities, and potentially fail builds, to prevent vulnerable container images from making their way into production registries and environments. 
+
+Anchore provides a Jenkins plugin that will need to be configured to communicate with an existing Anchore installation. The Anchore Jenkins plugin surfaces security and policy evaluation reports directly in the Jenkins UI and as JSON artifacts. 
+
+![jenkins-ui](images/anchore-jenkins.png)
