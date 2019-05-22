@@ -31,7 +31,7 @@ In the above image, we can see that **CVE-2019-3462** is of severity *high*, lin
 
 **Note:** A list of vulnerabilities can also be viewed using the [Anchore CLI](https://github.com/anchore/anchore-cli) which can be configured to communicate with a running Anchore service.
 
-In addition, the dashboard provides higher-leve view presentation of vulnerabilites impacting all images scanned with Anchore. 
+Also, the dashboard view provides a higher-level presentation of the vulnerabilities impacting all images scanned with Anchore.
 
 ![anchore-dashboard](images/anchore-enterprise-dashboard.png)
 
