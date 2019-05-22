@@ -25,4 +25,4 @@ One of the critical points of focus here is leveraging Anchore to identify known
 
 Anchore Enterprise customers can view identified vulnerabilities for analyzed images, by logging into the UI, and navigating to the image in question. 
 
-[!anchore-image](images/anchore-enterprise-image.png)
+![anchore-image](images/anchore-enterprise-image.png)
