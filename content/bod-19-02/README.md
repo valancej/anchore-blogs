@@ -26,3 +26,5 @@ One of the critical points of focus here is leveraging Anchore to identify known
 Anchore Enterprise customers can view identified vulnerabilities for analyzed images, by logging into the UI, and navigating to the image in question. 
 
 ![anchore-image](images/anchore-enterprise-image.png)
+
+**Note:** A list of vulnerabilities can also be viewed using the [Anchore CLI](https://github.com/anchore/anchore-cli) which can be configured to communicate with a running Anchore service.
