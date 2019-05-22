@@ -31,8 +31,22 @@ Anchore Enterprise customers can view identified vulnerabilities for analyzed im
 
 ### Viewing vulnerabilities in the build phase
 
-Anchore scanning can be integrated directly into the build phase of the software development lifecycle to identify security vulnerabilities, and potentially fail builds, to prevent vulnerable container images from making their way into production registries and environments. 
+Anchore scanning can be integrated directly into the build phase of the software development lifecycle to identify security vulnerabilities, and potentially fail builds, to prevent vulnerable container images from making their way into production registries and environments. This point of integration is typically the fastest path to vulnerability identification and remediation for development teams. 
 
 Anchore provides a Jenkins plugin that will need to be configured to communicate with an existing Anchore installation. The Anchore Jenkins plugin surfaces security and policy evaluation reports directly in the Jenkins UI and as JSON artifacts. 
 
 ![jenkins-ui](images/anchore-jenkins.png)
+
+**Note:** For more information on how custom Anchore policies can be created to fulfill specific compliance requirements, contact us, or navigate to our open-source [policy hub](https://github.com/anchore/hub) for examples. 
+
+#### Registry integration
+
+For organizations not scanning images during the build phase, Anchore can be configured to integrate directly with any docker_v2 container registry to continuously scan the repositories or tags.  
+
+### Ongoing vulnerability identification
+
+It is not uncommon for vulnerabilities to be published days or weeks after an image has been scanned. To address this, Anchore can be configured to subscribe to vulnerability updates. For example, if a user is subscribed to the library/nginx:latest image tag and a new vulnerability is added which matches a package in the subscribed nginx image, Anchore can send out a Slack notification. This alerting functionality is especially critical for the BOD 19-02 directive as the remediation requirements are time-sensitive, and agencies should be alerted of new threats ASAP.
+
+## Conclusion
+
+Anchore continues to provide solutions for the government, enterprises, and open-source users, built to support the adoption of container technologies. By understanding that containers are more than just CVEs and lists of packages, Anchore takes a container-native approach to image scanning and provides end-users with a complete suite of policy and compliance checks designed to support a variety of industry verticals from the U.S. Government and F100 enterprises to start-ups. 
