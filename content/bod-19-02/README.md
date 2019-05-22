@@ -27,7 +27,7 @@ Anchore Enterprise customers can view identified vulnerabilities for analyzed im
 
 ![anchore-image](images/anchore-enterprise-image.png)
 
-In the above image, we can see that **CVE-2019-3462** is of severity *high*, linked to the OS package *apt-1.0.9.8.4*, and there is a fix available in version *1.0.9.8.5*. Also presented in the UI, is a (link)[https://security-tracker.debian.org/tracker/CVE-2019-3462] to where the CVE information comes from. Based on the requirements of BOD 19-02, this high-severity vulnerability will need to be remediated within 15 days of identification. 
+In the above image, we can see that **CVE-2019-3462** is of severity *high*, linked to the OS package *apt-1.0.9.8.4*, and there is a fix available in version *1.0.9.8.5*. Also presented in the UI, is a [link](https://security-tracker.debian.org/tracker/CVE-2019-3462) to where the CVE information comes from. Based on the requirements of BOD 19-02, this high-severity vulnerability will need to be remediated within 15 days of identification. 
 
 **Note:** A list of vulnerabilities can also be viewed using the [Anchore CLI](https://github.com/anchore/anchore-cli) which can be configured to communicate with a running Anchore service.
 
