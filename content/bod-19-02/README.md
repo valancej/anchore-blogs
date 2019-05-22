@@ -15,7 +15,7 @@ Review Cyber Hygiene reports issues by CISA and remediate any critical and high 
 
 ## How Anchore fits in
 
-As federal agencies continue to transform their software development and deployment, it is necessary for them to incorporate proper security solutions purpose built to identify and prevent vulnerabilities native to their evolving technology stack.
+As federal agencies continue to transform their software development and deployment, it is necessary for them to incorporate proper security solutions purpose built to identify and prevent vulnerabilities that are native to their evolving technology stack.
 
 Anchore is a leading provider of container security and compliance enforcement solutions designed for open-source users and enterprises. Anchore provides vulnerability and policy management tools built to surface comprehensive container image package and data content, protect against security threats, and incorporate an actionable policy enforcement language capable of evolving over time as compliance needs change. Flexible and robust enough for the security and policy controls regulated industry verticals need to adopt cloud-native technologies in a DevSecOps environment. 
 
