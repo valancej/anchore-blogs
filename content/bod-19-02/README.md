@@ -19,3 +19,10 @@ As federal agencies continue to transform their software development and deploym
 
 Anchore is a leading provider of container security and compliance enforcement solutions designed for open-source users and enterprises. Anchore provides vulnerability and policy management tools built to surface comprehensive container image package and data content, protect against security threats, and incorporate an actionable policy enforcement language capable of evolving as compliance needs change. Flexible and robust enough for the security and policy controls regulated industry verticals need to adopt cloud-native technologies in a DevSecOps environment. 
 
+One of the critical points of focus here is leveraging Anchore to identify known vulnerabilities in container images. Anchore accomplishes this by first performing a detailed analysis of the container image, identifying all known operating system packages and third-party libraries. Following this, Anchore will map any known vulnerabilities to the identified packages within the analyzed image. 
+
+### Viewing vulnerabilities in the UI
+
+Anchore Enterprise customers can view identified vulnerabilities for analyzed images, by logging into the UI, and navigating to the image in question. 
+
+[!anchore-image](images/anchore-enterprise-image.png)
