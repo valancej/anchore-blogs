@@ -35,3 +35,5 @@ We've also taken it upon ourselves to scan some commonly used images with Anchor
 **Below is an example of six images we tested**
 
 ![alt text](images/vulndb_comparison.png)
+
+As shown above, VulnDB provides our customers with more vulnerability data, allowing them to make more informed vulnerability and policy management decisions around their container image workloads. 
