@@ -6,7 +6,7 @@ Open source software components and dependencies are increasingly making up a va
 
 Recognizing that container images need an added layer of security, Anchore conducts a deep image inspection and analysis to uncover what software components are inside of the image, and generate a detailed manifest that includes packages, configuration files, language modules, and artifacts. Following analysis, user-defined acceptance policies are evaluated against the analyzed data to cerfity the container images.
 
-## Viewing Enhanced Vulnerability Results
+## Viewing vulnerability results in the Anchore UI
 
 Just as in previous releases, Anchore Enterprise users can view vulnerability results for image in the UI. 
 
