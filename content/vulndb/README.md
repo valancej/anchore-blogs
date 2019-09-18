@@ -36,4 +36,4 @@ We've also taken it upon ourselves to scan some commonly used images with Anchor
 
 ![alt text](images/vulndb_comparison.png)
 
-As shown above, VulnDB provides our customers with more vulnerability data, allowing them to make more informed vulnerability and policy management decisions around their container image workloads. 
+As shown above, VulnDB provides our customers with additional vulnerability data than what is available publically. Allowing development, security, and operations teams to make more informed vulnerability and policy management decisions around their container image workloads. 
