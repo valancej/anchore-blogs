@@ -8,7 +8,7 @@ As the open source software components and their dependencies within container i
 
 **Risk Based Security's VulnDB**
 
-VulnDB provides the richest, more complete vulnerability intelligence available to help users and teams address points of risk across their organization - in the case of Anchore customers, security risk within container images. VulnDB provides over *70,000* additional vulnerabilities not found in the publically available source Common Vulnerabilities and Exposures (CVE) database. 
+VulnDB provides the richest, more complete vulnerability intelligence available to help users and teams address points of risk across their organization - in the case of Anchore customers, security risk within container images. VulnDB provides over *70,000* additional vulnerabilities not found in the publically available source Common Vulnerabilities and Exposures (CVE) database. Additionally, 45.5% of 2018 omission from the CVE database are high to critical in severity. This ties directly into a key understanding we have here at Anchore - Just being reliant on publically available vulnerability sources are not sufficient for Enterprises looking to seriously improve their security posture. 
 
 ## Viewing vulnerability results in the Anchore UI
 
