@@ -13,3 +13,12 @@ Just as in previous releases, Anchore Enterprise users can view vulnerability re
 **Below is a snapshot of Anchore Enterprise with vulnerable packages identified by VulnDB:**
 
 ![alt text](images/ui_vulndb_results.png)
+
+Diving deeper into a single VulnDB identifier brings in more information about the issue, and provides links to external sources. 
+
+**Below is a single VulnDB identifier record in Anchore Enterprise:**
+
+![alt text](images/ui_vulndb_popup.png)
+
+Given that more organizations are increasing their use of both containers and OSS components, it is becoming more critical for enterprises to have the proper mechanisms in place to uncover and fix vulnerable packages within container images as early as possible in the development lifecycle.
+
