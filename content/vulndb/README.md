@@ -18,7 +18,7 @@ Just as in previous releases, Anchore Enterprise users can view vulnerability re
 
 ![alt text](images/ui_vulndb_results.png)
 
-Diving deeper into a single VulnDB identifier brings in more information about the issue, and provides links to external sources. 
+Diving deeper into a single VulnDB identifier presents the user with more information about the issue, and provides links to external sources. 
 
 **Below is a single VulnDB identifier record in Anchore Enterprise:**
 
