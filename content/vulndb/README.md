@@ -28,3 +28,10 @@ Diving deeper into a single VulnDB identifier presents the user with more inform
 
 Given that more organizations are increasing their use of both containers and OSS components, it is becoming more critical for enterprises to have the proper mechanisms in place to uncover and fix vulnerable packages within container images as early as possible in the development lifecycle.
 
+## Enhanced Feed Comparison
+
+We've also taken it upon ourselves to scan some commonly used images with Anchore Engine (no VulnDB) and Anchore Enterprise (with VulnDB) and investigate the deltas. 
+
+**Below is an example of six images we tested**
+
+![alt text](images/vulndb_comparison.png)
